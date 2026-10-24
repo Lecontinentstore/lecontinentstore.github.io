@@ -46,8 +46,16 @@ window.PRODUITS = [
 ];
 
 // Disponibles en boutique mais sans photo sur le site pour l'instant.
-window.AUSSI = ['Body bébé Sénégal', 
-  'Sénégal black 🇸🇳', 'Bénin domicile et extérieur 🇧🇯', 'RD Congo domicile, extérieur et third 🇨🇩',
-  'Maillot bébé RD Congo 🇨🇩', 'Gabon 🇬🇦', 'Nigeria 🇳🇬', 'Débardeur Cameroun 🇨🇲', 'Angleterre 🏴',
-  'Belgique 🇧🇪', 'Corée du Sud 🇰🇷', 'Japon Dragon Ball 🇯🇵', 'Palestine édition spéciale 🇵🇸',
+window.AUSSI = [
+  { pays: 'Sénégal', quoi: 'black · body bébé', c: ['#00853f', '#fdef42', '#e31b23'] },
+  { pays: 'RD Congo', quoi: 'domicile · extérieur · third · bébé', c: ['#007fff', '#f7d618', '#ce1021'] },
+  { pays: 'Bénin', quoi: 'domicile · extérieur', c: ['#008751', '#fcd116', '#e8112d'] },
+  { pays: 'Gabon', quoi: 'domicile', c: ['#009e60', '#fcd116', '#3a75c4'] },
+  { pays: 'Nigeria', quoi: 'domicile', c: ['#008751', '#ffffff', '#008751'] },
+  { pays: 'Cameroun', quoi: 'débardeur', c: ['#007a5e', '#ce1126', '#fcd116'] },
+  { pays: 'Angleterre', quoi: 'domicile', c: ['#ffffff', '#cf081f', '#ffffff'] },
+  { pays: 'Belgique', quoi: 'domicile', c: ['#000000', '#fdda24', '#ef3340'] },
+  { pays: 'Corée du Sud', quoi: 'domicile', c: ['#ffffff', '#cd2e3a', '#0047a0'] },
+  { pays: 'Japon', quoi: 'Dragon Ball', c: ['#ffffff', '#bc002d', '#ffffff'] },
+  { pays: 'Palestine', quoi: 'édition spéciale', c: ['#000000', '#ffffff', '#149954', '#e4312b'] },
 ];

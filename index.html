@@ -7,38 +7,45 @@
   <meta name="description" content="Tous les maillots d'Afrique, du monde et de clubs à 35 €, flocage officiel en direct à 15 €. Boutique au 45 rue du Château d'Eau, Paris 10e. Commande sur WhatsApp.">
   <meta property="og:title" content="Le Continent Store · Le maillot de ton pays, floqué sous tes yeux">
   <meta property="og:description" content="35 € toutes versions · flocage officiel 15 € · Paris 10e · livraison partout.">
-  <meta property="og:image" content="img/detoures/cameroun-edition-violet.webp">
+  <meta property="og:image" content="https://lecontinentstore.github.io/img/logo/partage.jpg">
+  <link rel="canonical" href="https://lecontinentstore.github.io/">
+  <link rel="icon" type="image/png" href="img/logo/favicon.png">
+  <link rel="apple-touch-icon" href="img/logo/apple-touch-icon.png">
   <meta name="theme-color" content="#070707">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="style.css?v=35">
   <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.165.0/build/three.module.min.js","three/addons/":"https://unpkg.com/three@0.165.0/examples/jsm/"}}</script>
   <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SportingGoodsStore","name":"Le Continent Store","url":"https://lecontinentstore.github.io/","logo":"https://lecontinentstore.github.io/img/logo/logo-512.png","image":"https://lecontinentstore.github.io/img/logo/partage.jpg","description":"Maillots de foot d'Afrique, du monde et de clubs à 35 €, flocage officiel sur place à 15 €.","telephone":"+33751221206","priceRange":"35 € – 50 €","address":{"@type":"PostalAddress","streetAddress":"45 rue du Château d'Eau","postalCode":"75010","addressLocality":"Paris","addressCountry":"FR"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"11:00","closes":"20:00"}],"sameAs":["https://www.tiktok.com/@le.continent.storee","https://www.tiktok.com/@le.continent.stor","https://www.instagram.com/le.continent.store/"]}</script>
 </head>
 <body>
 
-<div class="loader" id="loader" aria-hidden="true">
-  <div class="loader-ring"><span id="loader-n">0</span></div>
-  <p>Le Continent Store</p>
-</div>
 
 <div class="cursor" id="cursor" aria-hidden="true"><span>Voir</span></div>
 <div class="grain" aria-hidden="true"></div>
 
+<div class="chercheur" id="chercheur" hidden>
+  <div class="ch-boite" role="dialog" aria-label="Chercher un maillot">
+    <label class="recherche"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input id="ch-q" type="search" placeholder="Cameroun, Brésil rétro, maillot rose…" autocomplete="off" enterkeyhint="search"></label>
+    <button class="ch-fermer" type="button" aria-label="Fermer">×</button>
+    <div class="ch-res" id="ch-res"></div>
+  </div>
+</div>
 <header class="top" id="top">
   <a class="brand" href="#accueil" aria-label="Le Continent Store, accueil">
-    <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
-      <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/>
-      <path d="M21 11c3-1 7 0 9 2l2 3 3 1 1 4-2 4-1 5-4 5-3 2-2-3-1-5-3-3-4-1-2-4 2-3 1-4z" fill="currentColor"/>
-    </svg>
+    <img class="brand-mark" src="img/logo/logo-128.png" srcset="img/logo/logo-128.png 1x, img/logo/logo-256.png 2x" width="46" height="46" alt="">
     <span>Le Continent<b> Store</b></span>
   </a>
   <nav class="nav" aria-label="Menu principal">
     <a href="#flocage">Flocage</a>
     <a href="#pays">Catalogue</a>
+    <a href="#retrait">Retrait</a>
     <a href="#boutique">Boutique</a>
   </nav>
+  <button class="top-search" id="top-search" type="button" aria-label="Chercher un maillot"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  <a class="pill pill-gold top-cta" data-wa="Bonjour Le Continent Store ! Je voudrais passer commande :" href="#" target="_blank" rel="noopener">Commander</a>
 </header>
 
 <main id="accueil">
@@ -49,13 +56,17 @@
     <div class="hero-shade"></div>
     <div class="globe-card" id="globe-card" hidden></div>
     <div class="hero-inner">
-      <p class="kicker reveal">Paris 10e · 6 jours sur 7 · Flocage en direct</p>
+      <p class="kicker reveal">Boutique · 45 rue du Château d'Eau · Paris 10e</p>
       <h1 class="hero-title">
         <span class="line"><span class="split">Le maillot</span></span>
         <span class="line"><span class="split">de ton pays</span></span>
         <span class="line country-line"><span class="country" id="country-word">Cameroun</span></span>
       </h1>
       <p class="hero-sub reveal">Tous les maillots d'<b>Afrique</b>, du <b>monde</b>… et des <b>clubs</b>.<br>Toutes versions <b>35&nbsp;€</b> · ton nom et ton numéro floqués sous tes yeux <b>15&nbsp;€</b>.</p>
+      <div class="hero-cta-c reveal">
+        <a class="btn-verre" href="#retrait">Réserver en boutique</a>
+        <a class="lien-fleche" href="#pays">Voir les maillots <span aria-hidden="true">↓</span></a>
+      </div>
     </div>
     <p class="globe-aide">Fais tourner la Terre · touche un pays pour voir ses maillots</p>
     <div class="scroll-hint" aria-hidden="true"><span></span>Scroll</div>
@@ -63,6 +74,34 @@
 
   <!-- BANDEAU -->
   <div class="band" aria-hidden="true"><div class="band-track" id="band"></div></div>
+
+  <!-- CATALOGUE -->
+  <section class="catalog" id="pays">
+    <div class="catalog-head">
+      <p class="kicker">Le catalogue</p>
+      <h2 class="big">Choisis ton pays</h2>
+      <p class="muted">La page prend ses couleurs. Touche un maillot pour voir la vraie vidéo et le commander.</p>
+    </div>
+    <div class="flags" id="flags" role="group" aria-label="Choisir un pays"></div>
+    <label class="recherche"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input id="q" type="search" placeholder="Cherche ton maillot : pays, couleur, rétro…" autocomplete="off" enterkeyhint="search" aria-label="Chercher un maillot"></label>
+    <div class="cat-tools">
+      <div class="tabs" role="group" aria-label="Filtrer par type">
+        <button class="tab is-on" data-f="tout">Tout</button>
+        <button class="tab" data-f="special">Éditions spéciales</button>
+        <button class="tab" data-f="retro">Rétro</button>
+        <button class="tab" data-f="bebe-enfant">Bébé &amp; enfant</button>
+      </div>
+      <p class="count" id="count" aria-live="polite"></p>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="voir-plus"><button class="btn-verre" id="voir-plus" hidden></button></div>
+    <div class="aussi">
+      <p class="kicker">Aussi en boutique</p>
+      <ul id="aussi"></ul>
+      <p class="clubs"><b>Maillots de clubs</b> : PSG, OM, Real, Barça, Premier League… on les a aussi. Demande ton club sur WhatsApp.</p>
+      <a class="pill pill-line" data-wa="Bonjour ! Vous avez le maillot de : " href="#" target="_blank" rel="noopener">Ta sélection ou ton club n'est pas là ? Demande-nous</a>
+    </div>
+  </section>
 
   <!-- ACCUEIL : le maillot 3D et le flocage en direct -->
   <section class="floc floc-top" id="flocage">
@@ -74,7 +113,8 @@
         <label>Nom<input id="f-nom" maxlength="12" value="ABOUBAKAR" autocomplete="off" autocapitalize="characters"></label>
         <label>N°<input id="f-num" maxlength="3" inputmode="numeric" value="10" autocomplete="off"></label>
       </div>
-      <p class="label">Maillot</p>
+      <p class="label">Maillot <span class="label-n" id="floc-n"></span></p>
+      <label class="recherche recherche-mini"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input id="f-q" type="search" placeholder="Trouve ton maillot…" autocomplete="off" aria-label="Chercher le maillot à floquer"></label>
       <div class="swatches" id="swatches" role="group" aria-label="Choisir le maillot à floquer"></div>
       <div class="hero-cta">
         <a class="pill pill-gold magnet" id="f-send" href="#" target="_blank" rel="noopener">Réserver ce flocage</a>
@@ -83,33 +123,37 @@
     </div>
     <div class="floc-visual">
       <canvas id="floc-canvas" aria-label="Maillot floqué en 3D, glisser pour le tourner"></canvas>
+      <canvas id="floc-2d" aria-label="Aperçu du dos du maillot floqué" hidden></canvas>
+      <p class="floc-mode" id="floc-mode">3D · glisse pour tourner</p>
     </div>
   </section>
 
-  <!-- CATALOGUE -->
-  <section class="catalog" id="pays">
-    <div class="catalog-head">
-      <p class="kicker">Le catalogue</p>
-      <h2 class="big">Choisis ton pays</h2>
-      <p class="muted">La page prend ses couleurs. Touche un maillot pour voir la vraie vidéo et le commander.</p>
+
+  <!-- RETRAIT EN BOUTIQUE -->
+  <section class="retrait" id="retrait">
+    <div class="retrait-head">
+      <p class="kicker">Commande en ligne · retrait en boutique</p>
+      <h2 class="big">Réserve.<br>Passe le chercher.</h2>
+      <p class="muted">Ton maillot t'attend au 45 rue du Château d'Eau, déjà floqué si tu veux. Tu l'essaies, tu paies sur place, tu repars avec.</p>
     </div>
-    <div class="flags" id="flags" role="group" aria-label="Choisir un pays"></div>
-    <div class="cat-tools">
-      <div class="tabs" role="group" aria-label="Filtrer par type">
-        <button class="tab is-on" data-f="tout">Tout</button>
-        <button class="tab" data-f="special">Éditions spéciales</button>
-        <button class="tab" data-f="retro">Rétro</button>
-        <button class="tab" data-f="bebe-enfant">Bébé &amp; enfant</button>
-      </div>
-      <p class="count" id="count" aria-live="polite"></p>
-    </div>
-    <div class="grid" id="grid"></div>
-    <div class="aussi">
-      <p class="kicker">Aussi en boutique</p>
-      <ul id="aussi"></ul>
-      <p class="clubs"><b>Maillots de clubs</b> : PSG, OM, Real, Barça, Premier League… on les a aussi. Demande ton club sur WhatsApp.</p>
-      <a class="pill pill-line" data-wa="Bonjour ! Vous avez le maillot de : " href="#" target="_blank" rel="noopener">Ta sélection ou ton club n'est pas là ? Demande-nous</a>
-    </div>
+    <ol class="etapes">
+      <li><b>1</b><span>Tu choisis</span><p>Ton maillot, ta taille et ton flocage, ici sur le site.</p></li>
+      <li><b>2</b><span>On le prépare</span><p>On le met de côté et on le floque à la presse, avant ton passage.</p></li>
+      <li><b>3</b><span>Tu passes le récupérer</span><p>Au créneau choisi. Essayage et paiement sur place, sans attente.</p></li>
+    </ol>
+    <form class="rdv" id="rdv">
+      <label>Ton prénom<input id="r-nom" maxlength="30" autocomplete="given-name" placeholder="Prénom"></label>
+      <label>Maillot (facultatif)<input id="r-maillot" maxlength="60" placeholder="Ex. Cameroun domicile, taille L"></label>
+      <label>Jour<select id="r-jour"></select></label>
+      <label>Heure<select id="r-heure"></select></label>
+      <button class="pill pill-gold" type="submit">Réserver mon créneau</button>
+    </form>
+    <ul class="atouts">
+      <li>Flocage officiel fait devant toi, en 5 minutes</li>
+      <li>Essayage sur place</li>
+      <li>Paiement en boutique, rien à payer en ligne</li>
+      <li>Bien plus de modèles en boutique que sur le site</li>
+    </ul>
   </section>
 
   <!-- CHIFFRES -->
@@ -125,23 +169,23 @@
     <div class="shop-card">
       <p class="kicker">La boutique</p>
       <h2 class="big">45 rue du<br>Château d'Eau</h2>
-      <p>75010 Paris · Métro Château d'Eau (ligne 4)<br>Du lundi au samedi, de 11&nbsp;h à 20&nbsp;h</p>
+      <p>75010 Paris · Métro Château d'Eau (ligne 4), à 1 minute<br>Du lundi au samedi, de 11&nbsp;h à 20&nbsp;h<br>Retrait de commande, essayage et flocage sur place</p>
       <div class="hero-cta">
         <a class="pill pill-light magnet" href="https://www.google.com/maps/search/?api=1&query=45+rue+du+Ch%C3%A2teau+d%27Eau+75010+Paris" target="_blank" rel="noopener">Itinéraire</a>
-        <a class="pill pill-wa magnet" data-wa="Bonjour ! Vous êtes ouverts aujourd'hui ?" href="#" target="_blank" rel="noopener">07 51 22 12 06</a>
+        <a class="pill pill-gold magnet" data-wa="Bonjour ! Vous êtes ouverts aujourd'hui ?" href="#" target="_blank" rel="noopener">07 51 22 12 06</a>
       </div>
     </div>
     <div class="socials">
       <a href="https://www.tiktok.com/@le.continent.storee" target="_blank" rel="noopener"><span>TikTok</span><b>@le.continent.storee</b><i>↗</i></a>
       <a href="https://www.tiktok.com/@le.continent.stor" target="_blank" rel="noopener"><span>TikTok</span><b>@le.continent.stor</b><i>↗</i></a>
       <a href="https://www.instagram.com/le.continent.store/" target="_blank" rel="noopener"><span>Instagram</span><b>@le.continent.store</b><i>↗</i></a>
-      <a href="https://www.vinted.fr/member/le.continent.store" target="_blank" rel="noopener"><span>Vinted</span><b>le.continent.store</b><i>↗</i></a>
     </div>
   </section>
 
   <section class="faq">
     <h2 class="big">Questions</h2>
-    <details><summary>Comment commander ?</summary><p>Touche un maillot : choisis la taille et le flocage, un message WhatsApp prêt à envoyer s'ouvre. On te confirme la disponibilité et la livraison. Rien n'est payé en ligne.</p></details>
+    <details><summary>Comment commander ?</summary><p>Touche un maillot, choisis la taille, le flocage et « Retrait en boutique », puis « Commander ». On te confirme la disponibilité et on te le met de côté. Rien n'est payé en ligne : tu paies en boutique.</p></details>
+    <details><summary>Je peux venir le chercher en boutique ?</summary><p>Oui, c'est le plus simple : réserve un créneau, ton maillot t'attend au 45 rue du Château d'Eau (métro Château d'Eau), déjà floqué si tu veux. Tu l'essaies et tu paies sur place.</p></details>
     <details><summary>Le flocage est-il officiel ?</summary><p>Oui : police et numéros officiels, posés à la presse en boutique, en quelques minutes. 15 € en plus du maillot, jusqu'à 3 chiffres.</p></details>
     <details><summary>Vous avez les maillots de clubs ?</summary><p>Oui, en plus des sélections. Demande ton club sur WhatsApp, on te dit ce qu'on a en stock.</p></details>
     <details><summary>Vous livrez ?</summary><p>Oui, en Île-de-France et partout en France. Frais et délais donnés sur WhatsApp selon ton adresse.</p></details>
@@ -161,10 +205,8 @@
 <nav class="dock" id="dock" aria-label="Accès rapide">
   <a class="dock-btn" href="#flocage">Flocage</a>
   <a class="dock-btn" href="#pays">Catalogue</a>
-  <a class="dock-btn dock-wa" data-wa="Bonjour Le Continent Store 👋" href="#" target="_blank" rel="noopener">
-    <svg viewBox="0 0 32 32" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6a10.6 10.6 0 0 1-5.4-1.5l-.4-.2-3.9 1 1-3.8-.2-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.6.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.8.9 3.8.8a3.3 3.3 0 0 0 2.2-1.5 2.7 2.7 0 0 0 .2-1.5c-.1-.2-.3-.3-.6-.5z"/></svg>
-    WhatsApp
-  </a>
+  <a class="dock-btn" href="#retrait">Retrait</a>
+  <a class="dock-btn dock-cmd" data-wa="Bonjour Le Continent Store ! Je voudrais passer commande :" href="#" target="_blank" rel="noopener">Commander</a>
 </nav>
 
 <!-- FICHE PRODUIT -->
@@ -191,8 +233,17 @@
         <input id="v-nom" maxlength="12" placeholder="NOM" aria-label="Nom à floquer" autocapitalize="characters">
         <input id="v-num" maxlength="3" inputmode="numeric" placeholder="N°" aria-label="Numéro">
       </div>
-      <a class="pill pill-wa pill-block" id="v-send" href="#" target="_blank" rel="noopener">Commander sur WhatsApp</a>
-      <p class="muted small">On te confirme dispo et livraison sur WhatsApp. Rien n'est payé en ligne.</p>
+      <p class="label">Récupération</p>
+      <div class="sizes" id="v-mode" role="radiogroup" aria-label="Récupération">
+        <button class="size is-on" data-m="boutique" role="radio" aria-checked="true">Retrait en boutique · gratuit</button>
+        <button class="size" data-m="livraison" role="radio" aria-checked="false">Livraison</button>
+      </div>
+      <div class="v-creneau" id="v-creneau">
+        <label>Jour<select id="v-jour"></select></label>
+        <label>Heure<select id="v-heure"></select></label>
+      </div>
+      <a class="pill pill-gold pill-block" id="v-send" href="#" target="_blank" rel="noopener">Commander</a>
+      <p class="muted small" id="v-note">On te met le maillot de côté au 45 rue du Château d'Eau. Tu paies sur place en le récupérant.</p>
     </div>
   </div>
 </div>
@@ -200,9 +251,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script type="module" src="jersey3d.js?v=14"></script>
-<script type="module" src="globe.js?v=4"></script>
-<script src="produits.js?v=12"></script>
-<script src="app.js?v=20"></script>
+<script type="module" src="globe.js?v=13"></script>
+<script src="produits.js?v=13"></script>
+<script src="recherche.js?v=1"></script>
+<script src="dos.js?v=1"></script>
+<script src="app.js?v=28"></script>
 </body>
 </html>

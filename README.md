@@ -43,3 +43,8 @@ Le dossier entier (vidéos comprises, ~37 Mo) s'héberge gratuitement sur Netlif
 - Le vrai logo (le cercle noir et or actuel est une version simplifiée).
 - Les maillots de la liste « Aussi en boutique ».
 - Frais, délais de livraison et moyens de paiement.
+
+## En ligne (public)
+**https://lecontinentstore.github.io/** : hébergé gratuitement sur GitHub Pages, dans l'organisation GitHub « Lecontinentstore » (rattachée au compte de Patrick).
+Copie du dossier : `C:\Users\User\Documents\lecontinentstore-site` (dépôt `Lecontinentstore/lecontinentstore.github.io`).
+Pour mettre à jour : recopier `site-web/` dans ce dossier (sans `_proto.html`), puis `git add -A`, `git commit`, `git push`. Le site se met à jour en ~1 minute.

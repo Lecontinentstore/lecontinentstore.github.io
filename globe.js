@@ -100,13 +100,39 @@ function demarrer() {
     carte.hidden = false;
     carte.querySelector('.gc-close').onclick = () => { carte.hidden = true; choisi = null; window.choisirPays && window.choisirPays(null); };
     carte.querySelectorAll('.gc-item').forEach(b => { b.onclick = () => window.ouvrirProduit && window.ouvrirProduit(liste[+b.dataset.i]); });
-    // tourne le globe pour mettre le pays face à nous
+    viser(nom);
+    finDemo();
+  }
+  // tourne le globe pour mettre le pays face à nous
+  function viser(nom, decale = false) {
     const [lat, lon] = PAYS[nom];
-    cibleY = -((lon + 90) * Math.PI / 180); cibleX = lat * Math.PI / 180 * .6;
+    cibleY = -((lon + 90) * Math.PI / 180) + (decale ? .62 : 0); cibleX = lat * Math.PI / 180 * .6 + (decale ? .3 : 0);
     while (cibleY - rotY > Math.PI) cibleY -= 2 * Math.PI;
     while (rotY - cibleY > Math.PI) cibleY += 2 * Math.PI;
+    // démo : toujours dans le sens où la Terre tourne déjà, jamais de retour en arrière
+    if (decale) while (cibleY <= rotY) cibleY += 2 * Math.PI;
     choisi = nom;
   }
+
+  // démo d'accueil : à l'arrivée, le globe se pose sur un pays, l'allume et montre ses maillots en vignette
+  // (pour faire comprendre qu'on peut toucher les pays), puis passe au suivant, jusqu'au premier geste du visiteur
+  // d'est en ouest, dans le sens de rotation : on fait le tour du monde sans jamais revenir en arrière
+  const DEMO = ['Cameroun', "Côte d'Ivoire", 'Cap-Vert', 'Brésil', 'Argentine', 'Mexique', 'Japon', 'Égypte'].filter(n => parPays[n]);
+  const pin = document.createElement('button'); pin.className = 'globe-pin'; pin.type = 'button'; hero.appendChild(pin);
+  let demoOn = true, demoI = -1, demoT = 0, pinNom = null;
+  function etapeDemo() {
+    demoI = (demoI + 1) % DEMO.length;
+    const nom = DEMO[demoI], l = parPays[nom];
+    viser(nom, true); pinNom = nom;
+    window.choisirPays && window.choisirPays(nom);
+    pin.innerHTML = `${window.ecussonPays ? window.ecussonPays(nom) : ''}${nom}`;
+    pin.classList.remove('on'); void pin.offsetWidth; pin.classList.add('on');
+  }
+  function finDemo() {
+    if (!demoOn) return;
+    demoOn = false; pin.classList.remove('on'); pinNom = null;
+  }
+  pin.addEventListener('click', () => { const n = pinNom; finDemo(); if (n) ouvrirCarte(n); });
   const ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), tmp = new THREE.Vector3();
   const survol = e => {
     const r = canvas.getBoundingClientRect();
@@ -122,7 +148,7 @@ function demarrer() {
     }
     return best;
   };
-  canvas.addEventListener('pointerdown', e => { drag = true; bouge = 0; lx = e.clientX; ly = e.clientY; cibleY = cibleX = null; });
+  canvas.addEventListener('pointerdown', e => { if (demoOn) { finDemo(); window.choisirPays && window.choisirPays(null); choisi = null; } drag = true; bouge = 0; lx = e.clientX; ly = e.clientY; cibleY = cibleX = null; });
   addEventListener('pointerup', e => {
     if (drag && bouge < 8) { const p = survol(e); if (p) ouvrirCarte(p.userData.nom); }
     drag = false;
@@ -158,19 +184,47 @@ function demarrer() {
 
   let visible = true;
   new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(hero);
-  let t0 = performance.now();
+  let t0 = performance.now(); const debut = t0;
   (function boucle(t) {
     requestAnimationFrame(boucle);
     const dt = Math.min(.05, (t - t0) / 1000); t0 = t;
     if (!visible) return;
-    if (cibleY !== null) { rotY += (cibleY - rotY) * Math.min(1, dt * 3); rotX += (cibleX - rotX) * Math.min(1, dt * 3); }
+    // pendant la démo d'arrivée, la Terre continue de tourner doucement, le pays choisi glisse avec elle
+    if (demoOn && cibleY !== null && !calme) cibleY += dt * .05;
+    if (cibleY !== null) { const v = Math.min(1, dt * (demoOn ? 1.3 : 3)); rotY += (cibleY - rotY) * v; rotX += (cibleX - rotX) * v; }
     else if (!drag) { rotY += vy; vy *= .95; if (!calme && !choisi && Math.abs(vy) < .001) rotY += dt * .06; }
-    pivot.rotation.set(rotX + my * .12, rotY + mx * .25, 0);
+    // ouverture : on arrive de loin dans les étoiles, le globe grossit et tourne vers nous
+    const k = calme ? 1 : Math.min(1, (t - debut) / 2600), e = 1 - Math.pow(1 - k, 3);
+    const zBase = hero.clientWidth < 700 ? 4.8 : 4.0;
+    cam.position.z = zBase + (1 - e) * 14;
+    if (k < 1) { canvas.style.opacity = e; for (const s of etoiles) s.material.opacity = .85 * Math.min(1, k * 2.5); }
+    pivot.rotation.set(rotX + my * .12, rotY + mx * .25 - (1 - e) * 2.2, 0);
     pivot.position.set(0, -.25 - prog * .5, prog * .5); pivot.scale.setScalar(1 + prog * .35);
     halo.position.copy(pivot.position); halo.scale.copy(pivot.scale); bord.position.copy(pivot.position); bord.scale.copy(pivot.scale);
-    canvas.style.opacity = 1 - prog * .85;
+    if (k >= 1) canvas.style.opacity = 1 - prog * .85;
     etoiles[0].rotation.set(my * .02, t * .000006 + mx * .03, 0);
     etoiles[1].rotation.set(my * .05, t * .00001 + mx * .06, 0);
+    if (demoOn && k >= 1 && !calme) {
+      if (demoI < 0 || t - demoT > 5200) { demoT = t; etapeDemo(); }
+      const pt = points.find(q => q.userData.nom === pinNom);
+      if (pt) {
+        const v = pt.getWorldPosition(new THREE.Vector3()).project(cam);
+        const r = canvas.getBoundingClientRect();
+        // petite étiquette (écusson + nom) collée au point du pays, comme au survol ;
+        // si elle tombe sur le texte ou les boutons, on la pousse sur le côté
+        let x = (v.x + 1) / 2 * r.width + 14, y = (1 - v.y) / 2 * r.height - pin.offsetHeight / 2;
+        const w = pin.offsetWidth, h = pin.offsetHeight;
+        const blocs = [...hero.querySelectorAll('.hero-title, .hero-sub, .hero-cta-c, .kicker')].map(el => el.getBoundingClientRect());
+        for (const e of blocs) {
+          const l = e.left - r.left - 10, d = e.right - r.left + 10, t = e.top - r.top - 6, bas = e.bottom - r.top + 6;
+          if (x < d && x + w > l && y < bas && y + h > t) {
+            if (d + w + 8 <= r.width) x = d; else if (l - w >= 8) x = l - w;
+            else { y = Math.max(...blocs.map(b => b.bottom)) - r.top + 14; break; } // pas de place à côté : sous les boutons
+          }
+        }
+        pin.style.transform = `translate(${Math.max(8, Math.min(r.width - w - 8, x))}px, ${y}px)`;
+      }
+    }
     for (const p of points) p.scale.setScalar(p.userData.base * (p.userData.nom === choisi ? 1.9 : 1 + Math.sin(t * .003 + p.userData.phase) * .25));
     renderer.render(scene, cam);
   })(t0);
