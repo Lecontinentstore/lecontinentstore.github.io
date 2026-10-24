@@ -40,7 +40,9 @@
   // ---------- Défilement fluide (ordinateur seulement : sur téléphone, le défilement natif est plus fluide) ----------
   let lenis = null;
   if (window.Lenis && !calme && fin) {
-    lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
+    // les zones qui défilent toutes seules (fiche maillot, recherche, liste du flocage, carte du globe)
+    // gardent la molette : sinon Lenis l'avale et la fiche reste figée sur ordinateur
+    lenis = new Lenis({ lerp: 0.1, smoothWheel: true, prevent: n => !!(n.closest && n.closest('[data-lenis-prevent], .viewer, .chercheur, .swatches, .gc-list, .globe-card')) });
     if (hasGsap && window.ScrollTrigger) {
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add(t => lenis.raf(t * 1000));
@@ -232,7 +234,7 @@
       $('img', c).addEventListener('error', fallback);
       io.observe(c);
       const v = $('video', c);
-      if (fin) {
+      if (fin && PRODUITS[+c.dataset.i].video !== 0) {   // pas de vidéo au survol pour les maillots qui n'en ont pas
         c.addEventListener('pointerenter', () => {
           if (!v.src) v.src = v.dataset.src;
           v.play().then(() => c.classList.add('is-playing')).catch(() => {});
@@ -258,8 +260,8 @@
 
   // ---------- Recherche depuis l'en-tête : un maillot n'importe où sur la page ----------
   const ch = $('#chercheur'), chQ = $('#ch-q'), chRes = $('#ch-res');
-  const ouvrirCh = () => { ch.hidden = false; requestAnimationFrame(() => ch.classList.add('on')); chQ.focus(); majCh(); };
-  const fermerCh = () => { ch.classList.remove('on'); setTimeout(() => { ch.hidden = true; }, 250); };
+  const ouvrirCh = () => { lenis && lenis.stop(); document.body.style.overflow = 'hidden'; ch.hidden = false; requestAnimationFrame(() => ch.classList.add('on')); chQ.focus(); majCh(); };
+  const fermerCh = () => { lenis && lenis.start(); document.body.style.overflow = ''; ch.classList.remove('on'); setTimeout(() => { ch.hidden = true; }, 250); };
   function majCh() {
     const q = chQ.value.trim(), res = window.chercherMaillots(q);
     if (!res) { chRes.innerHTML = `<p class="ch-aide">Tape un pays, une couleur, « rétro », « enfant »… même mal écrit, on devine.</p>`; return; }

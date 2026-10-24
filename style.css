@@ -615,3 +615,28 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-even
 /* photo de la fiche : visible tant que la vidéo ne joue pas */
 .viewer-media:not(.has-video) video { opacity: 0 !important; }
 #floc-2d.photo { aspect-ratio: 1 / 1; }
+
+/* v18 : fiche maillot sur ordinateur — la colonne de droite ne dépasse plus de l'écran, elle défile */
+@media (min-width: 861px) {
+  .viewer-panel { grid-template-rows: minmax(0, 1fr); height: min(760px, calc(100svh - 32px)); }
+  .viewer-media { min-height: 0; height: 100%; }
+  .viewer-info { min-height: 0; max-height: 100%; overscroll-behavior: contain; }
+}
+.viewer-panel, .ch-boite, .swatches, .gc-list { overscroll-behavior: contain; }
+
+/* v19 : bouton de la musique d'ambiance, en bas à droite */
+.son { position: fixed; right: 1.2rem; bottom: 1.4rem; z-index: 60; display: inline-flex; align-items: center; gap: .5rem; padding: .55rem .85rem .55rem .7rem;
+  border-radius: 999px; border: 1px solid rgba(227,181,76,.4); background: rgba(10,10,14,.5); color: var(--gold); font: 700 .72rem var(--font); letter-spacing: .14em; text-transform: uppercase;
+  cursor: pointer; backdrop-filter: blur(14px) saturate(1.3); -webkit-backdrop-filter: blur(14px) saturate(1.3); box-shadow: 0 8px 26px rgba(0,0,0,.35); transition: border-color .2s, opacity .2s; }
+.son:hover { border-color: rgba(227,181,76,.8); }
+.son:not(.on) { color: var(--dim); border-color: rgba(255,255,255,.18); }
+.son-barres { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; }
+.son-barres i { width: 3px; height: 4px; border-radius: 2px; background: currentColor; transition: height .3s; }
+.son.on .son-barres i { animation: barre 1.1s ease-in-out infinite; }
+.son.on .son-barres i:nth-child(2) { animation-delay: -.3s; } .son.on .son-barres i:nth-child(3) { animation-delay: -.6s; } .son.on .son-barres i:nth-child(4) { animation-delay: -.9s; }
+@keyframes barre { 0%, 100% { height: 4px; } 50% { height: 14px; } }
+.son:not(.on) .son-barres i:nth-child(odd) { height: 2px; }
+@media (max-width: 760px) { .son { right: 12px; bottom: 5.6rem; padding: .5rem .6rem; } .son-txt { display: none; } }
+@media (prefers-reduced-motion: reduce) { .son.on .son-barres i { animation: none; height: 10px; } }
+.son { transition: border-color .2s, opacity .4s, transform .4s; }
+.son.loin { opacity: 0; transform: translateY(10px); pointer-events: none; }

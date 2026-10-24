@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=38">
+  <link rel="stylesheet" href="style.css?v=41">
   <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.165.0/build/three.module.min.js","three/addons/":"https://unpkg.com/three@0.165.0/examples/jsm/"}}</script>
   <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"SportingGoodsStore","name":"Le Continent Store","url":"https://lecontinentstore.github.io/","logo":"https://lecontinentstore.github.io/img/logo/logo-512.png","image":"https://lecontinentstore.github.io/img/logo/partage.jpg","description":"Maillots de foot d'Afrique, du monde et de clubs à 35 €, flocage officiel sur place à 15 €.","telephone":"+33751221206","priceRange":"35 € – 50 €","address":{"@type":"PostalAddress","streetAddress":"45 rue du Château d'Eau","postalCode":"75010","addressLocality":"Paris","addressCountry":"FR"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"11:00","closes":"20:00"}],"sameAs":["https://www.tiktok.com/@le.continent.storee","https://www.tiktok.com/@le.continent.stor","https://www.instagram.com/le.continent.store/"]}</script>
@@ -27,7 +27,7 @@
 <div class="grain" aria-hidden="true"></div>
 
 <div class="chercheur" id="chercheur" hidden>
-  <div class="ch-boite" role="dialog" aria-label="Chercher un maillot">
+  <div class="ch-boite" data-lenis-prevent role="dialog" aria-label="Chercher un maillot">
     <label class="recherche"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input id="ch-q" type="search" placeholder="Cameroun, Brésil rétro, maillot rose…" autocomplete="off" enterkeyhint="search"></label>
     <button class="ch-fermer" type="button" aria-label="Fermer">×</button>
     <div class="ch-res" id="ch-res"></div>
@@ -115,7 +115,7 @@
       </div>
       <p class="label">Maillot <span class="label-n" id="floc-n"></span></p>
       <label class="recherche recherche-mini"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input id="f-q" type="search" placeholder="Trouve ton maillot…" autocomplete="off" aria-label="Chercher le maillot à floquer"></label>
-      <div class="swatches" id="swatches" role="group" aria-label="Choisir le maillot à floquer"></div>
+      <div class="swatches" data-lenis-prevent id="swatches" role="group" aria-label="Choisir le maillot à floquer"></div>
       <div class="hero-cta">
         <a class="pill pill-gold magnet" id="f-send" href="#" target="_blank" rel="noopener">Réserver ce flocage</a>
         <a class="pill pill-line" href="#pays">Voir le catalogue</a>
@@ -212,7 +212,7 @@
 <!-- FICHE PRODUIT -->
 <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-labelledby="v-title" hidden>
   <div class="viewer-bg" data-close></div>
-  <div class="viewer-panel">
+  <div class="viewer-panel" data-lenis-prevent>
     <button class="viewer-close" data-close aria-label="Fermer">✕</button>
     <div class="viewer-media" id="v-media">
       <canvas id="v-canvas" aria-label="Maillot en 3D, glisser pour le tourner"></canvas>
@@ -254,10 +254,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script type="module" src="globe.js?v=13"></script>
+<button class="son" id="son" type="button" aria-pressed="false" aria-label="Mettre la musique">
+  <span class="son-barres" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="son-txt">Son</span>
+</button>
 <script src="produits.js?v=14"></script>
 <script src="recherche.js?v=1"></script>
 <script src="dos.js?v=2"></script>
 <script src="flocage.js?v=7"></script>
-<script src="app.js?v=30"></script>
+<script src="son.js?v=3"></script>
+<script src="app.js?v=32"></script>
 </body>
 </html>
