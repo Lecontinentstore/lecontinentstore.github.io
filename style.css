@@ -640,3 +640,8 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-even
 @media (prefers-reduced-motion: reduce) { .son.on .son-barres i { animation: none; height: 10px; } }
 .son { transition: border-color .2s, opacity .4s, transform .4s; }
 .son.loin { opacity: 0; transform: translateY(10px); pointer-events: none; }
+/* son voulu mais bloqué par le navigateur : le bouton invite à toucher */
+.son.attente { color: var(--gold); border-color: rgba(227,181,76,.75); animation: invite 2.2s ease-in-out infinite; }
+.son.attente .son-txt { display: inline !important; }
+@keyframes invite { 0%, 100% { box-shadow: 0 8px 26px rgba(0,0,0,.35), 0 0 0 0 rgba(227,181,76,.45); } 50% { box-shadow: 0 8px 26px rgba(0,0,0,.35), 0 0 0 9px rgba(227,181,76,0); } }
+@media (prefers-reduced-motion: reduce) { .son.attente { animation: none; } }

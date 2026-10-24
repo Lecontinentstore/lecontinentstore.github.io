@@ -77,39 +77,72 @@
     accord(); minuteurs.push(setTimeout(etoile, 2500));
   }
 
-  function jouer() {
-    if (!ctx) demarrer();
-    ctx.resume();
+  // iPhone : en mode silencieux, Safari coupe le son « Web Audio ». On déclare une lecture de musique
+  // (audioSession, iOS 17+) et on fait tourner en boucle un petit fichier muet dans un <audio>,
+  // ce qui fait passer tout le son du site sur le canal « musique », comme une vidéo.
+  try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
+  let muet = null;
+  function canalMusique() {
+    if (!muet) {
+      const n = 8000, b = new ArrayBuffer(44 + n * 2), v = new DataView(b);   // WAV 8 kHz, 1 s de silence
+      const ec = (o, t) => [...t].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+      ec(0, 'RIFF'); v.setUint32(4, 36 + n * 2, true); ec(8, 'WAVEfmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true);
+      v.setUint16(22, 1, true); v.setUint32(24, 8000, true); v.setUint32(28, 16000, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+      ec(36, 'data'); v.setUint32(40, n * 2, true);
+      muet = new Audio(URL.createObjectURL(new Blob([b], { type: 'audio/wav' })));
+      muet.loop = true; muet.setAttribute('playsinline', ''); muet.volume = .01;
+    }
+    muet.play().catch(() => {});
+  }
+  // à appeler pendant un geste du visiteur : débloque vraiment l'audio sur iPhone (son vide joué tout de suite)
+  function debloquer() {
+    canalMusique();
+    const src = ctx.createBufferSource(); src.buffer = ctx.createBuffer(1, 1, 22050); src.connect(ctx.destination); src.start(0);
+  }
+
+  function jouer(geste) {
+    if (!ctx) { demarrer(); ctx.onstatechange = maj; }
+    if (geste) debloquer();
+    ctx.resume().then(maj, maj);
     maitre.gain.cancelScheduledValues(ctx.currentTime);
     maitre.gain.setTargetAtTime(VOLUME * presence(), ctx.currentTime, 1.5);   // fondu d'entrée doux
     joue = true; maj();
   }
   function couper() {
     if (!ctx) { joue = false; maj(); return; }
+    if (muet) muet.pause();
     maitre.gain.cancelScheduledValues(ctx.currentTime);
     maitre.gain.setTargetAtTime(0, ctx.currentTime, .25);
     setTimeout(() => { if (!joue) ctx.suspend(); }, 900);
     joue = false; maj();
   }
   function maj() {
-    btn.classList.toggle('on', joue);
-    btn.setAttribute('aria-pressed', joue);
-    btn.setAttribute('aria-label', joue ? 'Couper la musique' : 'Mettre la musique');
-    btn.title = joue ? 'Couper la musique' : 'Mettre la musique';
+    const vrai = joue && ctx && ctx.state === 'running';      // le son sort vraiment
+    btn.classList.toggle('on', vrai);
+    btn.classList.toggle('attente', voulu && !vrai);   // voulu mais pas encore débloqué : on invite à toucher
+    btn.querySelector('.son-txt').textContent = btn.classList.contains('attente') ? 'Activer le son' : 'Son';
+    btn.setAttribute('aria-pressed', vrai);
+    btn.setAttribute('aria-label', vrai ? 'Couper la musique' : 'Mettre la musique');
+    btn.title = vrai ? 'Couper la musique' : 'Mettre la musique';
   }
-
   btn.addEventListener('click', e => {
     e.stopPropagation();
-    joue ? couper() : jouer();
-    try { localStorage.setItem('son', joue ? 'on' : 'off'); } catch (er) {}
+    const actif = joue && ctx && ctx.state === 'running';
+    if (actif) { couper(); voulu = false; } else { voulu = true; jouer(true); }
+    try { localStorage.setItem('son', voulu ? 'on' : 'off'); } catch (er) {}
+    maj();
   });
   // premier geste du visiteur : on lance la musique s'il ne l'a pas coupée
+  // premier geste du visiteur : on lance la musique s'il ne l'a pas coupée. On garde l'écoute tant que le son
+  // n'est pas vraiment débloqué (sur iPhone, un glissement pour défiler ne compte pas, il faut un toucher).
+  const GESTES = ['pointerdown', 'keydown', 'touchend', 'click'];
   const premier = e => {
     if (e.target && e.target.closest && e.target.closest('#son')) return;
-    ['pointerdown', 'keydown', 'touchend'].forEach(t => removeEventListener(t, premier, true));
-    if (voulu && (!joue || ctx.state !== 'running')) jouer();
+    if (!voulu) return;
+    jouer(true);
+    ctx.resume().then(() => { if (ctx.state === 'running') GESTES.forEach(t => removeEventListener(t, premier, true)); });
   };
-  ['pointerdown', 'keydown', 'touchend'].forEach(t => addEventListener(t, premier, true));
+  GESTES.forEach(t => addEventListener(t, premier, true));
   // onglet caché : on se tait ; retour : on reprend si la musique jouait
   let avant = false;
   document.addEventListener('visibilitychange', () => {
@@ -136,8 +169,7 @@
   // essai immédiat (accepté par certains navigateurs, sinon on attend le premier geste)
   if (voulu && presence() > 0) {
     try {
-      jouer();
-      if (ctx.state !== 'running') { joue = false; maj(); }
+      jouer();   // sans geste : marche seulement si le navigateur l'autorise ; sinon le bouton propose « Activer le son »
     } catch (e) {}
   }
 })();
