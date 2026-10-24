@@ -301,10 +301,11 @@
     $('#v-send').href = waLink(msg);
     if (v3d) v3d.redessiner(floc ? { nom, num } : { nom: '', num: '' });
   }
+  vv.addEventListener('playing', () => vm.classList.add('has-video'));
   function mode(m) {
     vm.classList.toggle('is-video', m === 'video');
     $$('.viewer-switch button').forEach(b => b.classList.toggle('is-on', b.dataset.mode === m));
-    if (m === 'video') { if (!vv.src) vv.src = vid(courant); vv.play().catch(() => {}); } else vv.pause();
+    if (m === 'video') { if (courant.video === 0) return; if (!vv.src) vv.src = vid(courant); vv.play().catch(() => {}); } else vv.pause();
   }
   $$('.viewer-switch button').forEach(b => b.addEventListener('click', () => mode(b.dataset.mode)));
 
@@ -354,7 +355,10 @@
     viewer.style.setProperty('--k1', a);
     $('#v-pays').innerHTML = `${ecu(p.pays)} ${p.pays}`;
     $('#v-title').textContent = p.version;
+    $('#v-bulle').innerHTML = `${ecu(p.pays)}<span><b>${p.pays}</b>${p.version}</span>`;
     vv.pause(); vv.removeAttribute('src');
+    // la photo reste affichée tant que la vidéo ne joue pas (et pour les maillots sans vidéo)
+    $('#v-photo').src = img(p); vm.classList.remove('has-video');
     $('#v-floc').checked = false; $('#v-nom').value = ''; $('#v-num').value = '';
     viewer.hidden = false;
     const en3D = window.Jersey3D && !sans3D(p);
@@ -411,7 +415,16 @@
     const en3d = EN3D.includes(fp.img);
     $('#floc-canvas').hidden = !en3d; $('#floc-2d').hidden = en3d;
     $('#floc-mode').textContent = en3d ? '3D · glisse pour tourner' : 'Aperçu du dos floqué';
-    if (!en3d) { dos2D(fp, nom, num); return; }
+    if (!en3d) {
+      // vraie photo du dos si on l'a, sinon le dos dessiné
+      const jeton = majFloc.jeton = (majFloc.jeton || 0) + 1, c = $('#floc-2d');
+      (window.flocagePhoto ? flocagePhoto(c, fp, nom, num) : Promise.resolve(false)).then(ok => {
+        if (jeton !== majFloc.jeton) return;
+        c.classList.toggle('photo', ok);
+        if (!ok) dos2D(fp, nom, num);
+      }).catch(() => dos2D(fp, nom, num));
+      return;
+    }
     if (!fV) return;
     if (nouveau) { fV.set(design(fp, { nom, num })); fV.montrerDos(); } else fV.redessiner({ nom, num });
   }

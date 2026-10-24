@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=35">
+  <link rel="stylesheet" href="style.css?v=38">
   <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.165.0/build/three.module.min.js","three/addons/":"https://unpkg.com/three@0.165.0/examples/jsm/"}}</script>
   <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"SportingGoodsStore","name":"Le Continent Store","url":"https://lecontinentstore.github.io/","logo":"https://lecontinentstore.github.io/img/logo/logo-512.png","image":"https://lecontinentstore.github.io/img/logo/partage.jpg","description":"Maillots de foot d'Afrique, du monde et de clubs à 35 €, flocage officiel sur place à 15 €.","telephone":"+33751221206","priceRange":"35 € – 50 €","address":{"@type":"PostalAddress","streetAddress":"45 rue du Château d'Eau","postalCode":"75010","addressLocality":"Paris","addressCountry":"FR"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"11:00","closes":"20:00"}],"sameAs":["https://www.tiktok.com/@le.continent.storee","https://www.tiktok.com/@le.continent.stor","https://www.instagram.com/le.continent.store/"]}</script>
@@ -216,7 +216,9 @@
     <button class="viewer-close" data-close aria-label="Fermer">✕</button>
     <div class="viewer-media" id="v-media">
       <canvas id="v-canvas" aria-label="Maillot en 3D, glisser pour le tourner"></canvas>
+      <img id="v-photo" alt="">
       <video id="v-video" muted loop playsinline preload="none"></video>
+      <p class="v-bulle" id="v-bulle" aria-hidden="true"></p>
       <div class="viewer-switch" role="group" aria-label="Affichage">
         <button class="is-on" data-mode="3d">3D</button>
         <button data-mode="video">Vidéo réelle</button>
@@ -252,9 +254,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script type="module" src="globe.js?v=13"></script>
-<script src="produits.js?v=13"></script>
+<script src="produits.js?v=14"></script>
 <script src="recherche.js?v=1"></script>
-<script src="dos.js?v=1"></script>
-<script src="app.js?v=28"></script>
+<script src="dos.js?v=2"></script>
+<script src="flocage.js?v=7"></script>
+<script src="app.js?v=30"></script>
 </body>
 </html>

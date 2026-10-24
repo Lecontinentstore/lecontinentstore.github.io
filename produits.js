@@ -8,6 +8,7 @@ window.PRODUITS = [
   { img: 'cameroun-edition-rose', pays: 'Cameroun', version: 'Édition rose', drapeau: '🇨🇲', region: 'afrique', tags: ['special'], top: true, base: '#f46f97' , patron: 1, txt: '#141014' , photo: 1 },
   { img: 'cameroun-black-2026', pays: 'Cameroun', version: 'Black 2026', drapeau: '🇨🇲', region: 'afrique', tags: ['special'], base: '#2d2d31' , patron: 1, txt: '#f2b705' , photo: 1 },
   { img: 'domicile-cameroun-2026', pays: 'Cameroun', version: 'Domicile 2026', drapeau: '🇨🇲', region: 'afrique', base: '#0d401e' , photo: 1 , petits: ['bebe'] },
+  { img: 'cameroun-exterieur-rouge-2025', pays: 'Cameroun', version: 'Extérieur rouge 2025', drapeau: '🇨🇲', region: 'afrique', base: '#c8202a', photo: 1, video: 0 },
   { img: 'exterieur-cameroun', pays: 'Cameroun', version: 'Extérieur', drapeau: '🇨🇲', region: 'afrique', base: '#f1efe8' , patron: 1, txt: '#0f6b3a' , photo: 1 },
   { img: 'domicile-cote-divoire', pays: "Côte d'Ivoire", version: 'Domicile', drapeau: '🇨🇮', region: 'afrique', top: true, base: '#a82d00' , patron: 1, txt: '#ffffff' , photo: 1 },
   { img: 'exterieur-cote-divoire', pays: "Côte d'Ivoire", version: 'Extérieur', drapeau: '🇨🇮', region: 'afrique', top: true, base: '#ede7d7' , patron: 1, txt: '#f08a2c' , photo: 1 },

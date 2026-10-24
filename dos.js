@@ -1,5 +1,6 @@
 // couleurs principale et d'accent de chaque maillot (tirées des photos), pour l'aperçu 2D du flocage
 window.DOS = {
+  'cameroun-exterieur-rouge-2025': ['#c8202a', '#8f1a1f'],
 "exterieur-capvert": [
 "#c9cfe4",
 "#b0b3c8"
