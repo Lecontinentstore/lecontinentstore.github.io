@@ -1,0 +1,300 @@
+{
+"domicile-cote-divoire": {
+"haut": 120,
+"bas": 796,
+"cx": 452,
+"larg": 377,
+"cx_corps": 450
+},
+"cameroun-exterieur-rouge-2025": {
+"haut": 55,
+"bas": 844,
+"cx": 450,
+"larg": 343,
+"cx_corps": 447
+},
+"domicile-mexique": {
+"haut": 54,
+"bas": 844,
+"cx": 446,
+"larg": 340,
+"cx_corps": 446
+},
+"exterieur-france": {
+"haut": 55,
+"bas": 844,
+"cx": 434,
+"larg": 317,
+"cx_corps": 452
+},
+"exterieur-france-manche-longue": {
+"haut": 122,
+"bas": 803,
+"cx": 449,
+"larg": 546,
+"fait": 1,
+"cx_corps": 450
+},
+"france-domicile-1998-retro-zidane": {
+"haut": 59,
+"bas": 844,
+"cx": 460,
+"larg": 419,
+"cx_corps": 452
+},
+"exterieur-portugal": {
+"haut": 54,
+"bas": 844,
+"cx": 448,
+"larg": 321,
+"cx_corps": 451
+},
+"domicile-espagne": {
+"haut": 55,
+"bas": 845,
+"cx": 446,
+"larg": 306,
+"cx_corps": 446
+},
+"exterieur-espagne": {
+"haut": 54,
+"bas": 844,
+"cx": 449,
+"larg": 343,
+"cx_corps": 452
+},
+"exterieur-norvege-black": {
+"haut": 54,
+"bas": 845,
+"cx": 449,
+"larg": 341,
+"cx_corps": 448
+},
+"japon-edition-manga": {
+"haut": 71,
+"bas": 846,
+"cx": 460,
+"larg": 407,
+"fait": 1,
+"cx_corps": 435
+},
+"bresil-edition-speciale-christ-redempteur": {
+"haut": 137,
+"bas": 771,
+"cx": 450,
+"larg": 377,
+"fait": 1,
+"cx_corps": 444
+},
+"cameroun-black-2026": {
+"haut": 64,
+"bas": 845,
+"cx": 456,
+"larg": 463,
+"cx_corps": 453
+},
+"cameroun-edition-rose": {
+"haut": 60,
+"bas": 845,
+"cx": 451,
+"larg": 340,
+"cx_corps": 449
+},
+"centrafrique-exterieur": {
+"haut": 54,
+"bas": 844,
+"cx": 452,
+"larg": 302,
+"cx_corps": 441
+},
+"centrafrique": {
+"haut": 54,
+"bas": 845,
+"cx": 448,
+"larg": 301,
+"cx_corps": 447
+},
+"domicile-argentine": {
+"haut": 55,
+"bas": 845,
+"cx": 456,
+"larg": 350,
+"cx_corps": 447
+},
+"domicile-bresil": {
+"haut": 54,
+"bas": 844,
+"cx": 442,
+"larg": 347,
+"cx_corps": 451
+},
+"domicile-cameroun-2026": {
+"haut": 56,
+"bas": 845,
+"cx": 454,
+"larg": 430,
+"cx_corps": 452
+},
+"domicile-capvert": {
+"haut": 56,
+"bas": 845,
+"cx": 432,
+"larg": 357,
+"cx_corps": 431
+},
+"domicile-egypte": {
+"haut": 56,
+"bas": 845,
+"cx": 450,
+"larg": 356,
+"cx_corps": 449
+},
+"domicile-maroc": {
+"haut": 70,
+"bas": 844,
+"cx": 446,
+"larg": 411,
+"cx_corps": 446
+},
+"domicile-togo": {
+"haut": 61,
+"bas": 844,
+"cx": 446,
+"larg": 372,
+"cx_corps": 445
+},
+"domicile-tunisie": {
+"haut": 56,
+"bas": 845,
+"cx": 447,
+"larg": 406,
+"cx_corps": 447
+},
+"exterieur-bresil": {
+"haut": 55,
+"bas": 845,
+"cx": 446,
+"larg": 325,
+"cx_corps": 457
+},
+"exterieur-cameroun": {
+"haut": 70,
+"bas": 846,
+"cx": 424,
+"larg": 338,
+"fait": 1,
+"cx_corps": 457
+},
+"exterieur-capvert": {
+"haut": 56,
+"bas": 845,
+"cx": 432,
+"larg": 360,
+"cx_corps": 432
+},
+"exterieur-cote-divoire": {
+"haut": 79,
+"bas": 845,
+"cx": 444,
+"larg": 429,
+"cx_corps": 448
+},
+"exterieur-egypte": {
+"haut": 56,
+"bas": 845,
+"cx": 450,
+"larg": 340,
+"cx_corps": 447
+},
+"exterieur-maroc": {
+"haut": 77,
+"bas": 840,
+"cx": 455,
+"larg": 445,
+"cx_corps": 447
+},
+"exterieur-tunisie": {
+"haut": 59,
+"bas": 845,
+"cx": 446,
+"larg": 311,
+"cx_corps": 445
+},
+"haiti-domicile": {
+"haut": 55,
+"bas": 844,
+"cx": 446,
+"larg": 351,
+"cx_corps": 444
+},
+"haiti-exterieur": {
+"haut": 119,
+"bas": 802,
+"cx": 436,
+"larg": 479,
+"cx_corps": 442
+},
+"togo-blanc": {
+"haut": 103,
+"bas": 802,
+"cx": 447,
+"larg": 323,
+"fait": 1,
+"cx_corps": 450
+},
+"togo-vert": {
+"haut": 106,
+"bas": 799,
+"cx": 450,
+"larg": 313,
+"fait": 1,
+"cx_corps": 448
+},
+"domicile-france-manche-longue": {
+"haut": 89,
+"bas": 830,
+"cx": 438,
+"larg": 327,
+"fait": 1,
+"cx_corps": 422
+},
+"domicile-mali": {
+"haut": 63,
+"bas": 846,
+"cx": 448,
+"larg": 381,
+"fait": 1,
+"cx_corps": 445
+},
+"bresil-edition-speciale": {
+"haut": 160,
+"bas": 744,
+"cx": 448,
+"larg": 315,
+"fait": 1,
+"cx_corps": 448
+},
+"exterieur-argentine": {
+"haut": 89,
+"bas": 816,
+"cx": 448,
+"larg": 328,
+"fait": 1,
+"cx_corps": 448
+},
+"france-x-jacquemus": {
+"haut": 123,
+"bas": 786,
+"cx": 440,
+"larg": 372,
+"fait": 1,
+"cx_corps": 444
+},
+"france-1998-retro-exterieur-zidane": {
+"haut": 58,
+"bas": 845,
+"cx": 459,
+"larg": 411,
+"cx_corps": 450
+}
+}
