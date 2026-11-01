@@ -1,0 +1,2 @@
+Le Continent Store : site mis hors ligne à la demande de Patrick (01/11/2026).
+Dernière version publiée : commit 125f934. Pour la remettre : recopier clients/continent-store/site-web/ (dépôt ngora-studio) ici, puis commit + push.
