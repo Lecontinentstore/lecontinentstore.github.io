@@ -9,6 +9,14 @@ const PAYS = {
   'Égypte': [26.8, 30.8], 'Haïti': [19.0, -72.3], 'Brésil': [-10.8, -52.9], 'Argentine': [-34.0, -64.0],
   'Mexique': [23.6, -102.5], 'France': [46.6, 2.2], 'Portugal': [39.4, -8.2], 'Espagne': [40.4, -3.7],
   'Norvège': [61.0, 8.5], 'Japon': [36.2, 138.2],
+  'Sénégal': [14.5, -14.5], 'RD Congo': [-2.9, 23.7], 'Bénin': [9.3, 2.3], 'Gabon': [-0.8, 11.6], 'Nigeria': [9.1, 8.7],
+  'Algérie': [28.0, 2.6], 'Angleterre': [52.6, -1.5], 'Belgique': [50.6, 4.6], 'Allemagne': [51.2, 10.4],
+  'Corée du Sud': [36.5, 127.9], 'Palestine': [31.9, 35.2],
+  // clubs : sur leur ville (légèrement décalés quand deux clubs partagent la même)
+  'PSG': [48.86, 2.35], 'Paris FC': [48.6, 2.0], 'Marseille': [43.3, 5.4], 'Lyon': [45.76, 4.84],
+  'Real Madrid': [40.45, -3.69], 'Barça': [41.38, 2.12], 'Arsenal': [51.55, -0.1], 'Liverpool': [53.4, -2.98],
+  'Manchester United': [53.46, -2.29], 'Manchester City': [53.8, -1.9], 'Bayern Munich': [48.14, 11.58],
+  'AC Milan': [45.47, 9.19], 'Santos': [-23.96, -46.33],
 };
 const R = 1;
 const versXYZ = (lat, lon, r = R) => {
