@@ -667,3 +667,13 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-even
 .mini-pays .ecu { width: 16px; height: 16px; margin: 0; }
 .mini b { font-size: .95rem; font-weight: 900; text-transform: uppercase; font-stretch: 70%; }
 .mini i { font-style: normal; font-weight: 900; color: var(--gold); font-size: 1.05rem; }
+
+/* v21 : bandeau des clubs (sens inverse), rangées Pays / Clubs, choix Adulte / Enfant / Bébé */
+.band-clubs { border-top: 0; }
+.band-clubs .band-track { animation-direction: reverse; animation-duration: 40s; }
+.band-track .ecu { width: 1.15em; height: 1.15em; object-fit: contain; vertical-align: -.18em; }
+.flags-titre { margin: 1.2rem 0 .5rem; font-size: .72rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+.flags-titre:first-of-type { margin-top: .4rem; }
+.flags-clubs { margin-bottom: .4rem; }
+.v-age { margin-bottom: .2rem; }
+.v-age .size { font-weight: 800; }

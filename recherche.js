@@ -25,11 +25,13 @@
     'Liverpool': 'reds lfc', 'Arsenal': 'gunners', 'Bayern Munich': 'bayern munich munchen fcb', 'Barça': 'barca barcelone barcelona blaugrana',
     'Manchester United': 'manchester united man utd mu red devils', 'Manchester City': 'manchester city man city citizens skyblues', 'Lyon': 'ol olympique lyonnais lyonnais', 'Paris FC': 'pfc paris fc',
     'Santos': 'santos neymar', 'AC Milan': 'milan rossoneri',
+    'Bénin': 'benin beninois ecureuils', 'Gabon': 'gabonais pantheres', 'Nigeria': 'nigerian super eagles naija',
+    'Belgique': 'belge belgium diables rouges', 'Corée du Sud': 'coree korea coreen', 'Palestine': 'palestinien palestina',
     'Japon': 'japonais japan nippon samourai',
   };
   const MOTS = {
     domicile: 'home dom maison', exterieur: 'away ext', special: 'speciale edition', retro: 'vintage ancien 98 1998',
-    manches: 'longues ml manche', bebe: 'baby body', enfant: 'kids kid junior ensemble kit gamin', club: 'clubs',
+    manches: 'longues ml manche', bebe: 'baby body', debardeur: 'debardeur tank top sans manches', enfant: 'kids kid junior ensemble kit gamin', club: 'clubs',
   };
 
   const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();

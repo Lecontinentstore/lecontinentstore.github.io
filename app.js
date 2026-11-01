@@ -22,7 +22,9 @@
     'Espagne': ['#aa151b', '#f1bf00', '#aa151b'], 'Norvège': ['#ba0c2f', '#00205b', '#ffffff'],
     'Japon': ['#bc002d', '#ffffff', '#1d2b6b'],
     'RD Congo': ['#007fff', '#f7d618', '#ce1021'], 'Algérie': ['#006233', '#ffffff', '#d21034'],
-    'Allemagne': ['#000000', '#dd0000', '#ffce00'], 'Angleterre': ['#ffffff', '#cf081f', '#1d2b6b'],
+    'Allemagne': ['#000000', '#dd0000', '#ffce00'], 'Bénin': ['#008751', '#fcd116', '#e8112d'], 'Gabon': ['#009e60', '#fcd116', '#3a75c4'],
+    'Nigeria': ['#008751', '#ffffff', '#008751'], 'Belgique': ['#000000', '#fdda24', '#ef3340'], 'Corée du Sud': ['#cd2e3a', '#0047a0', '#ffffff'],
+    'Palestine': ['#000000', '#149954', '#e4312b'], 'Angleterre': ['#ffffff', '#cf081f', '#1d2b6b'],
     // clubs
     'Real Madrid': ['#ffffff', '#febe10', '#00529f'], 'PSG': ['#004170', '#da291c', '#ffffff'], 'Arsenal': ['#ef0107', '#ffffff', '#063672'],
     'Marseille': ['#2faee0', '#ffffff', '#0b2a4a'], 'Liverpool': ['#c8102e', '#00b2a9', '#f6eb61'], 'Bayern Munich': ['#dc052d', '#0066b2', '#ffffff'],
@@ -75,14 +77,18 @@
   // ---------- Bandeau ----------
   // écusson de la fédération à la place de l'emoji drapeau
   const slugPays = n => n.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/'/g, '').replace(/ /g, '-');
-  const ECUSSONS = ['cameroun', 'cote-divoire', 'cap-vert', 'togo', 'centrafrique', 'mali', 'maroc', 'tunisie', 'egypte', 'haiti', 'bresil', 'argentine', 'mexique', 'france', 'portugal', 'espagne', 'norvege', 'japon'];
+  const ECUSSONS = ['cameroun', 'cote-divoire', 'cap-vert', 'togo', 'centrafrique', 'mali', 'maroc', 'tunisie', 'egypte', 'haiti', 'bresil', 'argentine', 'mexique', 'france', 'portugal', 'espagne', 'norvege', 'japon',
+    'real-madrid', 'psg', 'arsenal', 'marseille', 'liverpool', 'bayern-munich', 'barca', 'manchester-united', 'manchester-city', 'lyon', 'paris-fc', 'santos', 'ac-milan',
+    'rd-congo', 'algerie', 'allemagne', 'angleterre', 'senegal'];
   const ecu = (n, cl = 'ecu') => ECUSSONS.includes(slugPays(n)) ? `<img class="${cl}" src="img/ecussons/${slugPays(n)}.png" alt="" onerror="this.remove()">`
     : COULEURS[n] ? `<i class="${cl} pastille-ecu" style="--a:${COULEURS[n][0]};--b:${COULEURS[n][1]};--c:${COULEURS[n][2]}" aria-hidden="true"></i>` : '';
   window.ecussonPays = ecu;
   const pays = [...new Map(PRODUITS.filter(p => !p.cat).map(p => [p.pays, p.drapeau])).entries()];
   const clubs = [...new Set(PRODUITS.filter(p => p.cat === 'club').map(p => p.pays))];
-  const band = pays.map(([n]) => `<span>${ecu(n)} ${n}</span>`).join('') + '<span>⚽ Clubs</span>';
+  const band = pays.map(([n]) => `<span>${ecu(n)} ${n}</span>`).join('');
   $('#band').innerHTML = band + band;
+  const bandClubs = [...new Set(PRODUITS.filter(p => p.cat === 'club').map(p => p.pays))].map(n => `<span>${ecu(n)} ${n}</span>`).join('');
+  $('#band-clubs').innerHTML = bandClubs + bandClubs;
   // « Aussi en boutique » : écusson s'il existe, sinon pastille aux couleurs du pays ; un appui demande sur WhatsApp
   $('#aussi').innerHTML = AUSSI.map(({ pays, quoi, c }) => `<li><a href="${waLink(`Bonjour ! Vous avez encore : ${pays} ${quoi} ?`)}" target="_blank" rel="noopener">${
     ECUSSONS.includes(slugPays(pays)) ? ecu(pays) : `<i class="pastille" style="background:linear-gradient(90deg,${c.map((k, i) => `${k} ${i / c.length * 100}% ${(i + 1) / c.length * 100}%`).join(',')})"></i>`
@@ -146,16 +152,18 @@
   const flags = $('#flags');
   flags.innerHTML = `<button class="flag is-on" data-p=""><i>🌍</i>Tous</button>` +
     pays.map(([nm]) => `<button class="flag" data-p="${nm}"><i>${ecu(nm)}</i>${nm}</button>`).join('') +
-    `<span class="flag-sep" aria-hidden="true">Clubs</span>` +
-    clubs.map(nm => `<button class="flag flag-club" data-p="${nm}"><i>${ecu(nm)}</i>${nm}</button>`).join('');
+    '';
+  $('#flags-clubs').innerHTML = clubs.map(nm => `<button class="flag flag-club" data-p="${nm}"><i>${ecu(nm)}</i>${nm}</button>`).join('');
   let filtrePays = '', filtreType = 'tout';
-  flags.addEventListener('click', e => {
+  const choixPays = e => {
     const b = e.target.closest('.flag'); if (!b) return;
-    $$('.flag', flags).forEach(x => x.classList.toggle('is-on', x === b));
+    $$('.flag').forEach(x => x.classList.toggle('is-on', x === b));
     filtrePays = b.dataset.p; choisi = filtrePays || null;
     if (choisi) theme(choisi);
     render(true);
-  });
+  };
+  flags.addEventListener('click', choixPays);
+  $('#flags-clubs').addEventListener('click', choixPays);
   $$('.tab').forEach(t => t.addEventListener('click', () => {
     if (t.dataset.f === 'petits') { allerA('#rayon-enfants'); return; }
     $$('.tab').forEach(x => x.classList.toggle('is-on', x === t));
@@ -283,7 +291,7 @@
   $('#rayon').addEventListener('click', e => { const b = e.target.closest('.mini'); if (b) ouvrir(PRODUITS[+b.dataset.i]); });
   $('#q').addEventListener('input', e => {
     qCat = e.target.value.trim();
-    if (qCat && filtrePays) { filtrePays = ''; $$('.flag', flags).forEach((x, i) => x.classList.toggle('is-on', !i)); }
+    if (qCat && filtrePays) { filtrePays = ''; $$('.flag').forEach(x => x.classList.toggle('is-on', x === $('.flag', flags))); }
     render(false);
   });
   grid.addEventListener('click', e => {
@@ -377,8 +385,18 @@
   });
 
   window.ouvrirProduit = p => ouvrir(p);
+  // versions d'un même maillot : l'adulte et ses versions enfant / bébé (lien « adulte » dans produits.js)
+  const famille = p => {
+    const adulte = p.adulte ? PRODUITS.find(x => x.img === p.adulte) : p;
+    return [adulte, ...PRODUITS.filter(x => x.adulte && x.adulte === adulte.img)].filter(Boolean);
+  };
+  const nomVersion = p => p.cat === 'enfant' ? 'Enfant' : p.cat === 'bebe' ? 'Bébé' : 'Adulte';
   function ouvrir(p) {
-    courant = p; retourFocus = document.activeElement;
+    const garderFocus = viewer.hidden;
+    courant = p; if (garderFocus) retourFocus = document.activeElement;
+    const fam = famille(p);
+    $('#v-age').hidden = fam.length < 2;
+    $('#v-age').innerHTML = fam.map(x => `<button class="size${x === p ? ' is-on' : ''}" role="radio" aria-checked="${x === p}" data-i="${PRODUITS.indexOf(x)}">${nomVersion(x)} · ${prix(x)} €</button>`).join('');
     const t = p.tags || [];
     const pt = p.petits || [];
     const tailles = p.cat === 'enfant' ? ['4 ans', '6 ans', '8 ans', '10 ans', '12 ans', '14 ans']
@@ -424,6 +442,10 @@
   }
   viewer.addEventListener('click', e => { if (e.target.closest('[data-close]')) fermer(); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && !viewer.hidden) fermer(); });
+  $('#v-age').addEventListener('click', e => {
+    const b = e.target.closest('[data-i]'); if (!b || PRODUITS[+b.dataset.i] === courant) return;
+    ouvrir(PRODUITS[+b.dataset.i]);
+  });
   $('#v-sizes').addEventListener('click', e => {
     const b = e.target.closest('.size'); if (!b) return;
     taille = b.textContent;

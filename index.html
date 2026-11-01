@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=43">
+  <link rel="stylesheet" href="style.css?v=44">
   <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.165.0/build/three.module.min.js","three/addons/":"https://unpkg.com/three@0.165.0/examples/jsm/"}}</script>
   <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"SportingGoodsStore","name":"Le Continent Store","url":"https://lecontinentstore.github.io/","logo":"https://lecontinentstore.github.io/img/logo/logo-512.png","image":"https://lecontinentstore.github.io/img/logo/partage.jpg","description":"Maillots de foot d'Afrique, du monde et de clubs à 35 €, flocage officiel sur place à 15 €.","telephone":"+33751221206","priceRange":"35 € – 50 €","address":{"@type":"PostalAddress","streetAddress":"45 rue du Château d'Eau","postalCode":"75010","addressLocality":"Paris","addressCountry":"FR"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"11:00","closes":"20:00"}],"sameAs":["https://www.tiktok.com/@le.continent.storee","https://www.tiktok.com/@le.continent.stor","https://www.instagram.com/le.continent.store/"]}</script>
@@ -74,15 +74,19 @@
 
   <!-- BANDEAU -->
   <div class="band" aria-hidden="true"><div class="band-track" id="band"></div></div>
+  <div class="band band-clubs" aria-hidden="true"><div class="band-track" id="band-clubs"></div></div>
 
   <!-- CATALOGUE -->
   <section class="catalog" id="pays">
     <div class="catalog-head">
       <p class="kicker">Le catalogue</p>
-      <h2 class="big">Choisis ton pays</h2>
+      <h2 class="big">Choisis ton pays ou ton club</h2>
       <p class="muted">La page prend ses couleurs. Touche un maillot pour voir la vraie vidéo et le commander.</p>
     </div>
+    <p class="flags-titre">Pays</p>
     <div class="flags" id="flags" role="group" aria-label="Choisir un pays"></div>
+    <p class="flags-titre">Clubs</p>
+    <div class="flags flags-clubs" id="flags-clubs" role="group" aria-label="Choisir un club"></div>
     <label class="recherche"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input id="q" type="search" placeholder="Cherche ton maillot : pays, couleur, rétro…" autocomplete="off" enterkeyhint="search" aria-label="Chercher un maillot"></label>
     <div class="cat-tools">
       <div class="tabs" role="group" aria-label="Filtrer par type">
@@ -112,7 +116,7 @@
     <div class="aussi">
       <p class="kicker">Aussi en boutique</p>
       <ul id="aussi"></ul>
-      <p class="clubs"><b>Maillots de clubs</b> : PSG, OM, Real, Barça, Premier League… on les a aussi. Demande ton club sur WhatsApp.</p>
+      <p class="clubs"><b>Et plein d'autres clubs et sélections</b> en boutique : demande le tien sur WhatsApp.</p>
       <a class="pill pill-line" data-wa="Bonjour ! Vous avez le maillot de : " href="#" target="_blank" rel="noopener">Ta sélection ou ton club n'est pas là ? Demande-nous</a>
     </div>
   </section>
@@ -242,6 +246,7 @@
       <p class="kicker" id="v-pays"></p>
       <h3 id="v-title"></h3>
       <p class="viewer-price"><b id="v-total">35</b> €</p>
+      <div class="sizes v-age" id="v-age" role="radiogroup" aria-label="Version adulte, enfant ou bébé" hidden></div>
       <p class="label">Taille</p>
       <div class="sizes" id="v-sizes" role="radiogroup" aria-label="Taille"></div>
       <label class="toggle"><input type="checkbox" id="v-floc"><span></span> Ajouter un flocage <em>+15 €</em></label>
@@ -271,11 +276,11 @@
 <button class="son" id="son" type="button" aria-pressed="false" aria-label="Mettre la musique">
   <span class="son-barres" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="son-txt">Son</span>
 </button>
-<script src="produits.js?v=17"></script>
-<script src="recherche.js?v=2"></script>
+<script src="produits.js?v=19"></script>
+<script src="recherche.js?v=3"></script>
 <script src="dos.js?v=2"></script>
 <script src="flocage.js?v=7"></script>
 <script src="son.js?v=5"></script>
-<script src="app.js?v=33"></script>
+<script src="app.js?v=34"></script>
 </body>
 </html>
