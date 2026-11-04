@@ -677,3 +677,22 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-even
 .flags-clubs { margin-bottom: .4rem; }
 .v-age { margin-bottom: .2rem; }
 .v-age .size { font-weight: 800; }
+
+/* v22 : bandeau des statistiques (discret, en bas à gauche, ne bloque rien) */
+.cookies { position: fixed; left: 16px; bottom: calc(84px + env(safe-area-inset-bottom));   /* au-dessus de la barre du bas */
+  z-index: 60; max-width: min(360px, calc(100vw - 96px));   /* place pour le bouton du son à droite */ display: flex; flex-wrap: wrap; align-items: center; gap: .5rem;
+  padding: .8rem .9rem; border-radius: 14px; background: rgba(12, 12, 14, .92); border: 1px solid rgba(255, 255, 255, .12); color: #fff;
+  font-size: .8rem; line-height: 1.35; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  opacity: 0; transform: translateY(12px); transition: opacity .35s, transform .35s; }
+.cookies.on { opacity: 1; transform: none; }
+.cookies.part { opacity: 0; transform: translateY(12px); }
+.cookies p { margin: 0; flex: 1 1 100%; }
+.cookies button { font: inherit; font-weight: 800; padding: .45rem .9rem; border-radius: 999px; cursor: pointer; border: 1px solid rgba(255, 255, 255, .25); background: transparent; color: #fff; }
+.cookies button[data-c="oui"] { background: var(--gold, #d4a72c); border-color: transparent; color: #111; }
+@media (max-width: 600px) { .cookies { left: 12px; bottom: calc(80px + env(safe-area-inset-bottom)); padding: .7rem .75rem; font-size: .76rem; } }
+
+/* v23 : moyens de paiement et livraison gratuite (carte de la boutique) */
+.paiements-titre { margin: 1.2rem 0 .5rem; font-size: .72rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+.paiements { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+.paiements li { padding: .4rem .8rem; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .18); background: rgba(255, 255, 255, .06); font-size: .82rem; font-weight: 700; }
+.livraison-gratuite { margin: .9rem 0 0; font-weight: 800; }

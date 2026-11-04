@@ -64,7 +64,7 @@
   }
   const allerA = t => lenis ? lenis.scrollTo(t, { offset: -50 }) : $(t).scrollIntoView({ behavior: calme ? 'auto' : 'smooth' });
   $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
-    const t = a.getAttribute('href'); if (t.length < 2 || !$(t)) return;
+    const t = a.getAttribute('href'); if (t[0] !== '#' || t.length < 2 || !$(t)) return;   // « Commander » passe de # à un lien WhatsApp
     e.preventDefault(); allerA(t);
   }));
   if (hasGsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
@@ -339,7 +339,7 @@
     const nom = $('#v-nom').value.trim().toUpperCase(), num = $('#v-num').value.replace(/\D/g, '');
     let msg = `Bonjour Le Continent Store 👋\nJe voudrais le maillot ${courant.pays} ${courant.version}\nTaille : ${taille}`;
     if (floc) msg += `\nFlocage : ${nom || '(nom)'} ${num || '(numéro)'}`;
-    msg += modeRecup === 'boutique' ? `\nRetrait en boutique (45 rue du Château d'Eau) : ${$('#v-jour').value}, ${$('#v-heure').value}` : `\nLivraison (je donne mon adresse)`;
+    msg += modeRecup === 'boutique' ? `\nRetrait en boutique (45 rue du Château d'Eau) : ${$('#v-jour').value}, ${$('#v-heure').value}` : `\nLivraison gratuite (je donne mon adresse)`;
     msg += `\nTotal : ${total} €\nC'est disponible ?`;
     $('#v-send').href = waLink(msg);
     if (v3d) v3d.redessiner(floc ? { nom, num } : { nom: '', num: '' });
@@ -358,8 +358,8 @@
     $('#v-creneau').hidden = modeRecup !== 'boutique';
     $$('#v-mode .size').forEach(x => { x.classList.toggle('is-on', x === b); x.setAttribute('aria-checked', x === b); });
     $('#v-note').textContent = modeRecup === 'boutique'
-      ? "On te met le maillot de côté au 45 rue du Château d'Eau. Tu paies sur place en le récupérant."
-      : 'On te donne les frais et le délai de livraison selon ton adresse. Rien n\'est payé en ligne.';
+      ? "On te met le maillot de côté au 45 rue du Château d'Eau. Tu paies sur place en le récupérant (espèces, PayPal, Revolut, Wero, virement ou Orange Money)."
+      : 'Livraison gratuite, où que tu sois. On te confirme le délai sur WhatsApp. Paiement : PayPal, Revolut, Wero, virement ou Orange Money.';
     majCommande();
   });
 
