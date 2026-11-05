@@ -4,7 +4,7 @@
 // Loi française (CNIL) : Clarity n'est chargé qu'après un « OK » du visiteur ; avant, les événements attendent.
 // Test : ajouter ?stats=debug à l'adresse pour voir chaque événement dans la console.
 (() => {
-  const CLARITY_ID = '';                                       // identifiant du projet Clarity (Paramètres > Aperçu)
+  const CLARITY_ID = 'z8k9sn5v63';                                       // identifiant du projet Clarity (Paramètres > Aperçu)
   const debug = /[?&]stats=debug/.test(location.search);
   if (!CLARITY_ID && !debug) return;
 

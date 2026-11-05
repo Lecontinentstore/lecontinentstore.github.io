@@ -696,3 +696,8 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-even
 .paiements { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
 .paiements li { padding: .4rem .8rem; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .18); background: rgba(255, 255, 255, .06); font-size: .82rem; font-weight: 700; }
 .livraison-gratuite { margin: .9rem 0 0; font-weight: 800; }
+
+/* v24 : aperçu du dos floqué dans la fiche (quand « Ajouter un flocage » est coché) */
+.viewer-media #v-dos { opacity: 0; pointer-events: none; transition: opacity .35s; cursor: default; padding: 4%; box-sizing: border-box; object-fit: contain; }
+.viewer-media.voit-dos #v-dos { opacity: 1; }
+.viewer-media.voit-dos img, .viewer-media.voit-dos video { opacity: 0 !important; }

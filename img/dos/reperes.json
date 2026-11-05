@@ -2,299 +2,741 @@
 "domicile-cote-divoire": {
 "haut": 120,
 "bas": 796,
-"cx": 452,
+"cx": 447,
 "larg": 377,
-"cx_corps": 450
+"cx_corps": 450,
+"angle": -1.1,
+"demi": 190
 },
 "cameroun-exterieur-rouge-2025": {
 "haut": 55,
 "bas": 844,
-"cx": 450,
+"cx": 451,
 "larg": 343,
-"cx_corps": 447
+"cx_corps": 448,
+"angle": 1.0,
+"demi": 178
 },
 "domicile-mexique": {
 "haut": 54,
 "bas": 844,
-"cx": 446,
+"cx": 443,
 "larg": 340,
-"cx_corps": 446
+"cx_corps": 448,
+"angle": -1.5,
+"demi": 172
 },
 "exterieur-france": {
-"haut": 55,
-"bas": 844,
-"cx": 434,
-"larg": 317,
-"cx_corps": 452
+"haut": 54,
+"bas": 845,
+"cx": 449,
+"larg": 323,
+"angle": 0.0,
+"demi": 160,
+"cx_corps": 449
 },
 "exterieur-france-manche-longue": {
-"haut": 122,
-"bas": 803,
-"cx": 449,
-"larg": 546,
-"fait": 1,
-"cx_corps": 450
+"haut": 144,
+"bas": 759,
+"cx": 461,
+"larg": 642,
+"angle": 2.2,
+"demi": 333,
+"cx_corps": 448
 },
 "france-domicile-1998-retro-zidane": {
 "haut": 59,
 "bas": 844,
-"cx": 460,
+"cx": 457,
 "larg": 419,
-"cx_corps": 452
+"cx_corps": 452,
+"angle": 1.3,
+"demi": 208
 },
 "exterieur-portugal": {
 "haut": 54,
 "bas": 844,
-"cx": 448,
+"cx": 455,
 "larg": 321,
-"cx_corps": 451
+"cx_corps": 452,
+"angle": 0.9,
+"demi": 169
 },
 "domicile-espagne": {
-"haut": 55,
+"haut": 54,
 "bas": 845,
-"cx": 446,
-"larg": 306,
-"cx_corps": 446
+"cx": 442,
+"larg": 321,
+"angle": 0.0,
+"demi": 166,
+"cx_corps": 442
 },
 "exterieur-espagne": {
-"haut": 54,
+"haut": 56,
 "bas": 844,
-"cx": 449,
-"larg": 343,
-"cx_corps": 452
+"cx": 453,
+"larg": 344,
+"angle": 0.0,
+"demi": 174,
+"cx_corps": 453
 },
 "exterieur-norvege-black": {
 "haut": 54,
 "bas": 845,
-"cx": 449,
+"cx": 450,
 "larg": 341,
-"cx_corps": 448
+"cx_corps": 448,
+"angle": 0.3,
+"demi": 172
 },
 "japon-edition-manga": {
 "haut": 71,
 "bas": 846,
-"cx": 460,
+"cx": 398,
 "larg": 407,
 "fait": 1,
-"cx_corps": 435
+"cx_corps": 398,
+"angle": 0.0,
+"demi": 237
 },
 "bresil-edition-speciale-christ-redempteur": {
 "haut": 137,
 "bas": 771,
-"cx": 450,
+"cx": 446,
 "larg": 377,
 "fait": 1,
-"cx_corps": 444
+"cx_corps": 444,
+"angle": 0.4,
+"demi": 188
 },
 "cameroun-black-2026": {
 "haut": 64,
 "bas": 845,
-"cx": 456,
+"cx": 459,
 "larg": 463,
-"cx_corps": 453
+"cx_corps": 454,
+"angle": 1.1,
+"demi": 235
 },
 "cameroun-edition-rose": {
 "haut": 60,
 "bas": 845,
 "cx": 451,
 "larg": 340,
-"cx_corps": 449
+"cx_corps": 450,
+"angle": 0.5,
+"demi": 176
 },
 "centrafrique-exterieur": {
 "haut": 54,
 "bas": 844,
-"cx": 452,
+"cx": 456,
 "larg": 302,
-"cx_corps": 441
+"cx_corps": 442,
+"angle": 4.9,
+"demi": 152
 },
 "centrafrique": {
 "haut": 54,
 "bas": 845,
-"cx": 448,
+"cx": 446,
 "larg": 301,
-"cx_corps": 447
+"cx_corps": 445,
+"angle": 0.3,
+"demi": 155
 },
 "domicile-argentine": {
 "haut": 55,
 "bas": 845,
-"cx": 456,
+"cx": 455,
 "larg": 350,
-"cx_corps": 447
+"cx_corps": 446,
+"angle": 2.8,
+"demi": 176
 },
 "domicile-bresil": {
 "haut": 54,
 "bas": 844,
-"cx": 442,
+"cx": 444,
 "larg": 347,
-"cx_corps": 451
+"cx_corps": 452,
+"angle": -2.8,
+"demi": 174
 },
 "domicile-cameroun-2026": {
 "haut": 56,
 "bas": 845,
-"cx": 454,
+"cx": 448,
 "larg": 430,
-"cx_corps": 452
+"cx_corps": 449,
+"angle": -0.4,
+"demi": 219
 },
 "domicile-capvert": {
 "haut": 56,
 "bas": 845,
-"cx": 432,
+"cx": 429,
 "larg": 357,
-"cx_corps": 431
+"cx_corps": 431,
+"angle": -0.6,
+"demi": 178
 },
 "domicile-egypte": {
 "haut": 56,
 "bas": 845,
-"cx": 450,
+"cx": 445,
 "larg": 356,
-"cx_corps": 449
+"cx_corps": 448,
+"angle": -1.1,
+"demi": 180
 },
 "domicile-maroc": {
 "haut": 70,
 "bas": 844,
-"cx": 446,
+"cx": 449,
 "larg": 411,
-"cx_corps": 446
+"cx_corps": 448,
+"angle": 0.4,
+"demi": 208
 },
 "domicile-togo": {
 "haut": 61,
 "bas": 844,
-"cx": 446,
+"cx": 437,
 "larg": 372,
-"cx_corps": 445
+"cx_corps": 442,
+"angle": -1.4,
+"demi": 188
 },
 "domicile-tunisie": {
 "haut": 56,
 "bas": 845,
-"cx": 447,
+"cx": 446,
 "larg": 406,
-"cx_corps": 447
+"cx_corps": 447,
+"angle": -0.3,
+"demi": 203
 },
 "exterieur-bresil": {
 "haut": 55,
 "bas": 845,
-"cx": 446,
+"cx": 444,
 "larg": 325,
-"cx_corps": 457
+"cx_corps": 461,
+"angle": -5.6,
+"demi": 168
 },
 "exterieur-cameroun": {
 "haut": 70,
 "bas": 846,
-"cx": 424,
+"cx": 466,
 "larg": 338,
 "fait": 1,
-"cx_corps": 457
+"cx_corps": 478,
+"angle": 30,
+"demi": 173,
+"axe": [
+455,
+200,
+478,
+650
+],
+"rot": 4
 },
 "exterieur-capvert": {
 "haut": 56,
 "bas": 845,
 "cx": 432,
 "larg": 360,
-"cx_corps": 432
+"cx_corps": 432,
+"angle": 0.3,
+"demi": 180
 },
 "exterieur-cote-divoire": {
 "haut": 79,
 "bas": 845,
-"cx": 444,
+"cx": 452,
 "larg": 429,
-"cx_corps": 448
+"cx_corps": 448,
+"angle": 1.1,
+"demi": 216
 },
 "exterieur-egypte": {
 "haut": 56,
 "bas": 845,
-"cx": 450,
+"cx": 455,
 "larg": 340,
-"cx_corps": 447
+"cx_corps": 446,
+"angle": 2.9,
+"demi": 170
 },
 "exterieur-maroc": {
 "haut": 77,
 "bas": 840,
-"cx": 455,
+"cx": 460,
 "larg": 445,
-"cx_corps": 447
+"cx_corps": 450,
+"angle": 2.6,
+"demi": 224
 },
 "exterieur-tunisie": {
 "haut": 59,
 "bas": 845,
-"cx": 446,
+"cx": 455,
 "larg": 311,
-"cx_corps": 445
+"cx_corps": 446,
+"angle": 3.1,
+"demi": 164
 },
 "haiti-domicile": {
 "haut": 55,
 "bas": 844,
 "cx": 446,
 "larg": 351,
-"cx_corps": 444
+"cx_corps": 444,
+"angle": 0.8,
+"demi": 178
 },
 "haiti-exterieur": {
 "haut": 119,
 "bas": 802,
-"cx": 436,
+"cx": 431,
 "larg": 479,
-"cx_corps": 442
+"cx_corps": 444,
+"angle": -3.1,
+"demi": 242
 },
 "togo-blanc": {
 "haut": 103,
 "bas": 802,
-"cx": 447,
+"cx": 448,
 "larg": 323,
 "fait": 1,
-"cx_corps": 450
+"cx_corps": 450,
+"angle": -0.8,
+"demi": 161
 },
 "togo-vert": {
 "haut": 106,
 "bas": 799,
-"cx": 450,
+"cx": 445,
 "larg": 313,
 "fait": 1,
-"cx_corps": 448
+"cx_corps": 449,
+"angle": -1.3,
+"demi": 157
 },
 "domicile-france-manche-longue": {
-"haut": 89,
-"bas": 830,
-"cx": 438,
-"larg": 327,
-"fait": 1,
-"cx_corps": 422
+"haut": 56,
+"bas": 843,
+"cx": 456,
+"larg": 345,
+"angle": 0.0,
+"demi": 174,
+"cx_corps": 456
 },
 "domicile-mali": {
 "haut": 63,
 "bas": 846,
-"cx": 448,
+"cx": 452,
 "larg": 381,
 "fait": 1,
-"cx_corps": 445
+"cx_corps": 450,
+"angle": 0.8,
+"demi": 186
 },
 "bresil-edition-speciale": {
 "haut": 160,
 "bas": 744,
-"cx": 448,
+"cx": 449,
 "larg": 315,
 "fait": 1,
-"cx_corps": 448
+"cx_corps": 448,
+"angle": 0.4,
+"demi": 157
 },
 "exterieur-argentine": {
 "haut": 89,
 "bas": 816,
-"cx": 448,
+"cx": 450,
 "larg": 328,
 "fait": 1,
-"cx_corps": 448
+"cx_corps": 448,
+"angle": 0.7,
+"demi": 168
 },
 "france-x-jacquemus": {
 "haut": 123,
 "bas": 786,
-"cx": 440,
+"cx": 430,
 "larg": 372,
 "fait": 1,
-"cx_corps": 444
+"cx_corps": 444,
+"angle": -4.3,
+"demi": 188
 },
 "france-1998-retro-exterieur-zidane": {
 "haut": 58,
 "bas": 845,
-"cx": 459,
+"cx": 456,
 "larg": 411,
+"cx_corps": 450,
+"angle": 2.0,
+"demi": 204
+},
+"aussi-senegal-black": {
+"haut": 61,
+"bas": 845,
+"cx": 447,
+"larg": 374,
+"fait": 1,
+"angle": -0.0,
+"demi": 187,
+"cx_corps": 447
+},
+"aussi-rdc-domicile": {
+"haut": 76,
+"bas": 845,
+"cx": 424,
+"larg": 365,
+"fait": 1,
+"angle": 0.0,
+"demi": 180,
+"cx_corps": 424
+},
+"aussi-rdc-exterieur": {
+"haut": 57,
+"bas": 846,
+"cx": 447,
+"larg": 369,
+"fait": 1,
+"angle": -1.5,
+"demi": 185,
+"cx_corps": 452
+},
+"aussi-rdc-third": {
+"haut": 72,
+"bas": 846,
+"cx": 449,
+"larg": 360,
+"fait": 1,
+"angle": 5.0,
+"demi": 179,
+"cx_corps": 433
+},
+"aussi-benin-domicile": {
+"haut": 62,
+"bas": 846,
+"cx": 451,
+"larg": 354,
+"fait": 1,
+"angle": -0.8,
+"demi": 175,
+"cx_corps": 453
+},
+"aussi-gabon": {
+"haut": 70,
+"bas": 846,
+"cx": 435,
+"larg": 378,
+"fait": 1,
+"angle": -4.3,
+"demi": 194,
 "cx_corps": 450
+},
+"aussi-nigeria": {
+"haut": 63,
+"bas": 845,
+"cx": 435,
+"larg": 332,
+"fait": 1,
+"angle": 3.9,
+"demi": 166,
+"cx_corps": 424
+},
+"aussi-cameroun-debardeur": {
+"haut": 92,
+"bas": 845,
+"cx": 445,
+"larg": 448,
+"fait": 1,
+"angle": 0.0,
+"demi": 230,
+"cx_corps": 445
+},
+"aussi-angleterre": {
+"haut": 68,
+"bas": 844,
+"cx": 446,
+"larg": 351,
+"fait": 1,
+"angle": 8.0,
+"demi": 175,
+"cx_corps": 422
+},
+"aussi-belgique": {
+"haut": 62,
+"bas": 846,
+"cx": 454,
+"larg": 345,
+"fait": 1,
+"angle": 2.4,
+"demi": 172,
+"cx_corps": 447
+},
+"aussi-coree": {
+"haut": 69,
+"bas": 845,
+"cx": 449,
+"larg": 340,
+"fait": 1,
+"angle": 8.0,
+"demi": 172,
+"cx_corps": 425
+},
+"real-madrid-domicile-2026": {
+"haut": 60,
+"bas": 846,
+"cx": 457,
+"larg": 365,
+"fait": 1,
+"angle": 0.6,
+"demi": 184,
+"cx_corps": 454
+},
+"real-madrid-exterieur-2026": {
+"haut": 59,
+"bas": 846,
+"cx": 441,
+"larg": 349,
+"fait": 1,
+"angle": -1.8,
+"demi": 176,
+"cx_corps": 446
+},
+"real-madrid-rose-2026": {
+"haut": 159,
+"bas": 818,
+"cx": 467,
+"larg": 451,
+"fait": 1,
+"angle": 2.0,
+"demi": 225,
+"cx_corps": 459
+},
+"psg-exterieur-2026": {
+"haut": 56,
+"bas": 844,
+"cx": 449,
+"larg": 358,
+"angle": 0.0,
+"demi": 180,
+"cx_corps": 449
+},
+"arsenal-domicile-2026": {
+"haut": 60,
+"bas": 846,
+"cx": 458,
+"larg": 330,
+"fait": 1,
+"angle": 2.7,
+"demi": 168,
+"cx_corps": 450
+},
+"arsenal-exterieur-2026": {
+"haut": 61,
+"bas": 845,
+"cx": 452,
+"larg": 402,
+"fait": 1,
+"angle": 0.5,
+"demi": 201,
+"cx_corps": 450
+},
+"om-domicile-2026": {
+"haut": 64,
+"bas": 846,
+"cx": 458,
+"larg": 417,
+"fait": 1,
+"angle": 1.0,
+"demi": 214,
+"cx_corps": 454
+},
+"om-exterieur-2026": {
+"haut": 61,
+"bas": 845,
+"cx": 457,
+"larg": 449,
+"fait": 1,
+"angle": 1.9,
+"demi": 224,
+"cx_corps": 449
+},
+"liverpool-domicile-2026": {
+"haut": 62,
+"bas": 845,
+"cx": 451,
+"larg": 334,
+"fait": 1,
+"angle": 3.0,
+"demi": 168,
+"cx_corps": 442
+},
+"liverpool-exterieur-2026": {
+"haut": 73,
+"bas": 845,
+"cx": 462,
+"larg": 336,
+"fait": 1,
+"angle": 1.9,
+"demi": 171,
+"cx_corps": 457
+},
+"bayern-domicile-2026": {
+"haut": 59,
+"bas": 845,
+"cx": 456,
+"larg": 337,
+"fait": 1,
+"angle": 2.2,
+"demi": 170,
+"cx_corps": 450
+},
+"bayern-exterieur-2026": {
+"haut": 60,
+"bas": 845,
+"cx": 456,
+"larg": 370,
+"fait": 1,
+"angle": 0.7,
+"demi": 182,
+"cx_corps": 454
+},
+"barca-domicile-2026": {
+"haut": 56,
+"bas": 845,
+"cx": 449,
+"larg": 348,
+"angle": 0.0,
+"demi": 178,
+"cx_corps": 449
+},
+"barca-exterieur-2026": {
+"haut": 58,
+"bas": 846,
+"cx": 447,
+"larg": 358,
+"fait": 1,
+"angle": -0.1,
+"demi": 184,
+"cx_corps": 447
+},
+"man-united-domicile-2026": {
+"haut": 76,
+"bas": 845,
+"cx": 425,
+"larg": 331,
+"fait": 1,
+"angle": 20,
+"demi": 165,
+"cx_corps": 419,
+"axe": [
+428,
+200,
+422,
+650
+],
+"rot": 0
+},
+"man-united-exterieur-2026": {
+"haut": 95,
+"bas": 817,
+"cx": 460,
+"larg": 533,
+"fait": 1,
+"angle": -0.4,
+"demi": 272,
+"cx_corps": 462
+},
+"man-city-domicile-2026": {
+"haut": 64,
+"bas": 844,
+"cx": 440,
+"larg": 406,
+"fait": 1,
+"angle": -2.4,
+"demi": 204,
+"cx_corps": 448
+},
+"man-city-exterieur-2026": {
+"haut": 71,
+"bas": 846,
+"cx": 454,
+"larg": 634,
+"fait": 1,
+"angle": 0.0,
+"demi": 330,
+"cx_corps": 454
+},
+"lyon-domicile-2026": {
+"haut": 68,
+"bas": 845,
+"cx": 460,
+"larg": 391,
+"fait": 1,
+"angle": 3.6,
+"demi": 193,
+"cx_corps": 448
+},
+"lyon-exterieur-2026": {
+"haut": 60,
+"bas": 846,
+"cx": 443,
+"larg": 354,
+"fait": 1,
+"angle": 1.3,
+"demi": 182,
+"cx_corps": 438
+},
+"paris-fc-domicile-2026": {
+"haut": 59,
+"bas": 846,
+"cx": 450,
+"larg": 423,
+"fait": 1,
+"angle": -1.7,
+"demi": 208,
+"cx_corps": 456
+},
+"paris-fc-exterieur-2026": {
+"haut": 99,
+"bas": 808,
+"cx": 443,
+"larg": 456,
+"fait": 1,
+"angle": -1.3,
+"demi": 229,
+"cx_corps": 448
+},
+"santos-neymar-2026": {
+"haut": 65,
+"bas": 846,
+"cx": 448,
+"larg": 321,
+"fait": 1,
+"angle": 0.0,
+"demi": 160,
+"cx_corps": 448
+},
+"aussi-palestine": {
+"haut": 65,
+"bas": 845,
+"cx": 452,
+"larg": 473,
+"fait": 1,
+"angle": 1.9,
+"demi": 236,
+"cx_corps": 444
 }
 }
