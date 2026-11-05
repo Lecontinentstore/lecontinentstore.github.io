@@ -105,12 +105,31 @@ function projection(m, F, dos) {
   return new THREE.Vector4(a, b, -k, m.haut + k * F.yTop);
 }
 
+// police officielle du pays (D.police, donnée par flocage.js) : taille réglée sur la hauteur réelle des capitales
+// et des chiffres, comme sur les vrais maillots (nom ~10 %, numéro ~44 % de la largeur du dos)
+function texteOfficiel(ctx, P, txt, x, y, hCap, maxL, contour) {
+  ctx.font = `${P.w} 100px "${P.f}", Archivo, sans-serif`;
+  const asc = ctx.measureText(/^\d+$/.test(txt) ? '0' : 'H').actualBoundingBoxAscent || 72;
+  const fs = hCap * 100 / asc;
+  ctx.font = `${P.w} ${fs}px "${P.f}", Archivo, sans-serif`;
+  const l = ctx.measureText(txt).width, s = l > maxL ? maxL / l : 1;
+  ctx.save(); ctx.translate(x, y); ctx.scale(s, 1);
+  if (contour) ctx.strokeText(txt, 0, 0);
+  ctx.fillText(txt, 0, 0); ctx.restore();
+}
+
 // Dos : nom et numéro du flocage imprimés sur la photo du dos
 function texteDos(ctx, D, cx, yNom, yNum, torse) {
   const fond = D.base || '#888';
   const txt = D.txt || (clair(fond) ? '#111' : (D.c3 && D.c3 !== fond && clair(D.c3) !== clair(fond) ? D.c3 : '#fff'));
   ctx.fillStyle = txt; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
   ctx.shadowColor = 'rgba(0,0,0,.3)'; ctx.shadowOffsetY = torse * .008;
+  if (D.police) {
+    if (D.nom) texteOfficiel(ctx, D.police, D.nom, cx, yNom, torse * .1, torse * .8, false);
+    if (D.num) { ctx.lineWidth = torse * .008; ctx.strokeStyle = ombre(txt === '#fff' ? fond : txt, .55); texteOfficiel(ctx, D.police, D.num, cx, yNum, torse * .44, torse * .76, true); }
+    ctx.shadowColor = 'transparent';
+    return;
+  }
   if (D.nom) {
     let fs = torse * .16; ctx.font = `900 ${fs}px Archivo, Impact, sans-serif`;
     while (ctx.measureText(D.nom).width * .78 > torse * .78 && fs > 8) { fs *= .94; ctx.font = `900 ${fs}px Archivo, Impact, sans-serif`; }

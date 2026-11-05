@@ -468,23 +468,26 @@
   ['v-floc', 'v-nom', 'v-num'].forEach(id => $('#' + id).addEventListener('input', majCommande));
   $('#v-floc').addEventListener('change', () => { majCommande(); if (v3d) $('#v-floc').checked ? v3d.montrerDos() : v3d.montrerFace(); });
 
-  // ---------- Configurateur de flocage : photo du dos + police officielle du pays ou du club ----------
+  // ---------- Configurateur de flocage : le Cameroun violet en 3D en premier (effet visuel), puis photo du dos + police officielle ----------
+  const EN3D = ['cameroun-edition-violet'];
   // sélections et clubs (pas les rétros, déjà floqués au nom du joueur, ni les enfants / bébés)
   let FLOCS = PRODUITS.filter(p => (!p.cat || p.cat === 'club') && !/neymar/.test(p.img));   // Santos « Neymar 10 » : déjà floqué
-  let fp = PRODUITS.find(p => p.img === 'domicile-cameroun-2026') || FLOCS[0];
+  let fp = PRODUITS.find(p => p.img === EN3D[0]) || FLOCS[0], fV = null;
   const swatches = () => {
     $('#floc-n').textContent = `· ${FLOCS.length} au choix`;
     $('#swatches').innerHTML = FLOCS.map((p, i) => {
       const [a, b] = coul(p.pays);
       const v = p.version.replace(/^Édition /, '').replace(/ 202[67](-27)?$/, '').toLowerCase();
-      return `<button class="swatch${p === fp ? ' is-on' : ''}" style="--a:${p.base || a};--b:${b}" data-i="${i}">${ecu(p.pays)}${p.pays} ${v}</button>`;
+      return `<button class="swatch${p === fp ? ' is-on' : ''}" style="--a:${p.base || a};--b:${b}" data-i="${i}">${ecu(p.pays)}${p.pays} ${v}${EN3D.includes(p.img) ? '<em>3D</em>' : ''}</button>`;
     }).join('');
   };
   swatches();
   // une fois la liste des dos connue, on ne garde que les maillots qu'on peut montrer floqués (sélections d'abord, puis clubs)
   (window.dosFlocage || Promise.resolve(null)).then(rep => {
     if (!rep) return;
-    FLOCS = FLOCS.filter(p => rep[p.img]).sort((x, y) => (x.cat === 'club') - (y.cat === 'club'));
+    // la 3D d'abord, puis les sélections, puis les clubs
+    const rang = p => EN3D.includes(p.img) ? 0 : p.cat === 'club' ? 2 : 1;
+    FLOCS = FLOCS.filter(p => rep[p.img] || EN3D.includes(p.img)).sort((x, y) => rang(x) - rang(y));
     if (!FLOCS.includes(fp)) fp = FLOCS[0];
     swatches();
   });
@@ -492,6 +495,18 @@
   function majFloc(nouveau) {
     const { nom, num } = valeurs();
     $('#f-send').href = waLink(`Bonjour ! Je veux le maillot ${fp.pays} ${fp.version} floqué ${nom} ${num} (35 € + 15 €), à récupérer en boutique. C'est possible ?`);
+    const en3d = EN3D.includes(fp.img);
+    $('#floc-canvas').hidden = !en3d; $('#floc-2d').hidden = en3d;
+    $('#floc-mode').textContent = en3d ? '3D · glisse pour tourner' : 'Aperçu du dos · police officielle';
+    if (en3d) {
+      if (!fV) return;   // la 3D se charge : elle s'affichera floquée dès qu'elle est prête
+      // même flocage que les autres maillots : police officielle du pays (Cameroun), accents seulement s'il les imprime
+      const police = window.policeFlocage ? policeFlocage(fp) : null;
+      const nomF = police && !police.acc ? nom.normalize('NFD').replace(/[̀-ͯ]/g, '') : nom;
+      const poser = () => { if (nouveau) { fV.set(design(fp, { nom: nomF, num, police })); fV.montrerDos(); } else fV.redessiner({ nom: nomF, num, police }); };
+      (window.chargerPoliceFlocage ? chargerPoliceFlocage(fp) : Promise.resolve()).then(poser, poser);
+      return;
+    }
     // photo du dos si on l'a, sinon le dos dessiné
     const jeton = majFloc.jeton = (majFloc.jeton || 0) + 1, c = $('#floc-2d');
     (window.flocagePhoto ? flocagePhoto(c, fp, nom, num) : Promise.resolve(false)).then(ok => {
@@ -555,7 +570,21 @@
   });
   $('#f-num').addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 3); });
   ['f-nom', 'f-num'].forEach(id => $('#' + id).addEventListener('input', () => majFloc(false)));
-  majFloc(false);
+  majFloc(true);
+
+  // ---------- Démarrage de la 3D ----------
+  const demarrer3D = () => {
+    fV = Jersey3D.viewer($('#floc-canvas'), { auto: false, rotation: Math.PI });
+    majFloc(true);
+  };
+  // la 3D (modèle de 570 Ko) ne se charge qu'à l'approche du flocage : l'ouverture du site reste rapide sur téléphone
+  addEventListener('jersey3d-ready', demarrer3D, { once: true });
+  const charger3D = () => {
+    if (charger3D.fait) return; charger3D.fait = true;
+    const sc = document.createElement('script'); sc.type = 'module'; sc.src = 'jersey3d.js?v=15'; document.head.appendChild(sc);
+  };
+  new IntersectionObserver((es, o) => { if (es.some(e => e.isIntersecting)) { o.disconnect(); charger3D(); } }, { rootMargin: '900px 0px' }).observe($('#flocage'));
+  addEventListener('load', () => setTimeout(charger3D, 3500), { once: true }); // sinon, une fois la page affichée et l'arrivée du globe finie
 
 
   // ---------- Apparitions au défilement ----------
