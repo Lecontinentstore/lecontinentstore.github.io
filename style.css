@@ -701,3 +701,12 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-even
 .viewer-media #v-dos { opacity: 0; pointer-events: none; transition: opacity .35s; cursor: default; padding: 4%; box-sizing: border-box; object-fit: contain; }
 .viewer-media.voit-dos #v-dos { opacity: 1; }
 .viewer-media.voit-dos img, .viewer-media.voit-dos video { opacity: 0 !important; }
+
+/* v26 : bandeau cookies discret, une ligne : « 🍪 Ce site utilise des cookies. » Refuser / Accepter */
+.cookies { max-width: calc(100vw - 96px); flex-direction: row; flex-wrap: nowrap; align-items: center; gap: .6rem; padding: .45rem .5rem .45rem .85rem;
+  border-radius: 999px; font-size: .76rem; background: rgba(12, 12, 14, .82); }
+.cookies p { flex: 0 1 auto; white-space: nowrap; }
+.cookies-boutons { display: flex; gap: .3rem; flex: none; }
+.cookies-boutons button { padding: .3rem .7rem; font-size: .72rem; }
+.lien-cookies { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 600px) { .cookies { padding: .4rem .45rem .4rem .75rem; font-size: .72rem; gap: .45rem; } .cookies-boutons button { padding: .28rem .6rem; } }

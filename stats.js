@@ -30,21 +30,34 @@
   }
   if (accord === 'oui') chargerClarity();
 
-  // ---------- bandeau discret (en bas, ne bloque rien) ----------
-  if (!accord) {
+  // ---------- bandeau cookies discret (une ligne en bas, ne bloque rien) ----------
+  // Refuser est aussi simple qu'accepter (CNIL) ; le lien « Cookies » du pied de page le rouvre pour changer d'avis.
+  function choisir(c) {
+    const avant = accord;
+    accord = c; try { localStorage.setItem('stats', c); } catch (er) {}
+    if (c === 'oui') { if (avant !== 'oui') chargerClarity(); return; }
+    attente.length = 0;
+    if (avant === 'oui') {                                    // retrait de l'accord : on coupe Clarity et on efface ses cookies
+      try { window.clarity && clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'denied' }); window.clarity && clarity('stop'); } catch (er) {}
+      ['_clck', '_clsk'].forEach(n => { document.cookie = `${n}=; Max-Age=0; path=/`; document.cookie = `${n}=; Max-Age=0; path=/; domain=.${location.hostname}`; });
+    }
+  }
+  function bandeau() {
+    if (document.querySelector('.cookies')) return;
     const b = document.createElement('div');
-    b.className = 'cookies'; b.setAttribute('role', 'dialog'); b.setAttribute('aria-label', 'Statistiques du site');
-    b.innerHTML = `<p>On mesure la visite du site (anonyme) pour l'améliorer. D'accord ?</p>
-      <button type="button" data-c="oui">OK</button><button type="button" data-c="non">Non merci</button>`;
+    b.className = 'cookies'; b.setAttribute('role', 'dialog'); b.setAttribute('aria-label', 'Cookies');
+    b.innerHTML = `<p><span aria-hidden="true">🍪</span> Ce site utilise des cookies.</p>
+      <div class="cookies-boutons"><button type="button" data-c="non">Refuser</button><button type="button" data-c="oui">Accepter</button></div>`;
     b.addEventListener('click', e => {
       const c = e.target.dataset && e.target.dataset.c; if (!c) return;
-      accord = c; try { localStorage.setItem('stats', c); } catch (er) {}
+      choisir(c);
       b.classList.add('part'); setTimeout(() => b.remove(), 400);
-      if (c === 'oui') chargerClarity(); else attente.length = 0;
     });
-    const poser = () => { document.body.appendChild(b); requestAnimationFrame(() => b.classList.add('on')); };
-    setTimeout(poser, 6000);                                   // une fois l'intro du globe finie
+    document.body.appendChild(b); requestAnimationFrame(() => b.classList.add('on'));
   }
+  if (!accord) setTimeout(bandeau, 6000);                    // une fois l'intro du globe finie
+  const lien = document.getElementById('gerer-cookies');
+  if (lien) lien.addEventListener('click', bandeau);
 
   const $ = s => document.querySelector(s);
   const texte = el => (el ? el.textContent : '').replace(/\s+/g, ' ').trim();
