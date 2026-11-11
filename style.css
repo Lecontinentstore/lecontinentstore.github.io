@@ -710,3 +710,6 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-even
 .cookies-boutons button { padding: .3rem .7rem; font-size: .72rem; }
 .lien-cookies { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
 @media (max-width: 600px) { .cookies { padding: .4rem .45rem .4rem .75rem; font-size: .72rem; gap: .45rem; } .cookies-boutons button { padding: .28rem .6rem; } }
+
+/* v27 : description courte dans la fiche maillot */
+.v-desc { margin: .1rem 0 .6rem; color: var(--dim, rgba(255,255,255,.7)); font-size: .88rem; line-height: 1.5; }

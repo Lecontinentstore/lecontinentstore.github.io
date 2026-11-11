@@ -27,7 +27,7 @@
     'Santos': 'santos neymar', 'AC Milan': 'milan rossoneri',
     'Bénin': 'benin beninois ecureuils', 'Gabon': 'gabonais pantheres', 'Nigeria': 'nigerian super eagles naija',
     'Belgique': 'belge belgium diables rouges', 'Corée du Sud': 'coree korea coreen', 'Palestine': 'palestinien palestina',
-    'Japon': 'japonais japan nippon samourai',
+    'Japon': 'japonais japan nippon samourai', 'Angola': 'angolais palancas negras can',
   };
   const MOTS = {
     domicile: 'home dom maison', exterieur: 'away ext', special: 'speciale edition', retro: 'vintage ancien 98 1998',

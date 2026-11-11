@@ -21,7 +21,7 @@
     'France': ['#002395', '#ed2939', '#ffffff'], 'Portugal': ['#006600', '#ff0000', '#ffcc00'],
     'Espagne': ['#aa151b', '#f1bf00', '#aa151b'], 'Norvège': ['#ba0c2f', '#00205b', '#ffffff'],
     'Japon': ['#bc002d', '#ffffff', '#1d2b6b'],
-    'RD Congo': ['#007fff', '#f7d618', '#ce1021'], 'Algérie': ['#006233', '#ffffff', '#d21034'],
+    'RD Congo': ['#007fff', '#f7d618', '#ce1021'], 'Angola': ['#cc092f', '#000000', '#ffcb00'], 'Algérie': ['#006233', '#ffffff', '#d21034'],
     'Allemagne': ['#000000', '#dd0000', '#ffce00'], 'Bénin': ['#008751', '#fcd116', '#e8112d'], 'Gabon': ['#009e60', '#fcd116', '#3a75c4'],
     'Nigeria': ['#008751', '#ffffff', '#008751'], 'Belgique': ['#000000', '#fdda24', '#ef3340'], 'Corée du Sud': ['#cd2e3a', '#0047a0', '#ffffff'],
     'Palestine': ['#000000', '#149954', '#e4312b'], 'Angleterre': ['#ffffff', '#cf081f', '#1d2b6b'],
@@ -422,6 +422,7 @@
     viewer.style.setProperty('--k1', a);
     $('#v-pays').innerHTML = `${ecu(p.pays)} ${p.pays}`;
     $('#v-title').textContent = p.version;
+    $('#v-desc').textContent = p.desc || ''; $('#v-desc').hidden = !p.desc;
     $('#v-bulle').innerHTML = `${ecu(p.pays)}<span><b>${p.pays}</b>${p.version}</span>`;
     vv.pause(); vv.removeAttribute('src');
     // la photo reste affichée tant que la vidéo ne joue pas (et pour les maillots sans vidéo)
@@ -471,7 +472,7 @@
   // ---------- Configurateur de flocage : le Cameroun violet en 3D en premier (effet visuel), puis photo du dos + police officielle ----------
   const EN3D = ['cameroun-edition-violet'];
   // sélections et clubs (pas les rétros, déjà floqués au nom du joueur, ni les enfants / bébés)
-  let FLOCS = PRODUITS.filter(p => (!p.cat || p.cat === 'club') && !/neymar/.test(p.img));   // Santos « Neymar 10 » : déjà floqué
+  let FLOCS = PRODUITS.filter(p => (!p.cat || p.cat === 'club') && !p.floque && !/neymar/.test(p.img));   // déjà floqués : Santos « Neymar 10 », Back 2 Back, Lamine Yamal 10
   let fp = PRODUITS.find(p => p.img === EN3D[0]) || FLOCS[0], fV = null;
   const swatches = () => {
     $('#floc-n').textContent = `· ${FLOCS.length} au choix`;
