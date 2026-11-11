@@ -713,3 +713,9 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-even
 
 /* v27 : description courte dans la fiche maillot */
 .v-desc { margin: .1rem 0 .6rem; color: var(--dim, rgba(255,255,255,.7)); font-size: .88rem; line-height: 1.5; }
+
+/* v28 : rayon enfants & bébés en deux rangées titrées (ensembles enfant, puis bodys bébé) */
+.rayon-sous { margin: 1.1rem 0 .55rem; font-size: .95rem; font-weight: 900; text-transform: uppercase; letter-spacing: .06em; }
+.rayon-sous:first-child { margin-top: 0; }
+.rayon-sous { display: flex; flex-wrap: wrap; align-items: baseline; gap: .15rem .6rem; }
+.rayon-sous span { color: var(--gold); font-weight: 800; letter-spacing: .04em; font-size: .78rem; white-space: nowrap; }

@@ -164,9 +164,9 @@
   };
   flags.addEventListener('click', choixPays);
   $('#flags-clubs').addEventListener('click', choixPays);
-  $$('.tab').forEach(t => t.addEventListener('click', () => {
+  $$('.tab[data-f]').forEach(t => t.addEventListener('click', () => {   // onglets du catalogue seulement (pas ceux du rayon enfants)
     if (t.dataset.f === 'petits') { allerA('#rayon-enfants'); return; }
-    $$('.tab').forEach(x => x.classList.toggle('is-on', x === t));
+    $$('.tab[data-f]').forEach(x => x.classList.toggle('is-on', x === t));
     filtreType = t.dataset.f; render(true);
   }));
   const garde = p => {
@@ -274,14 +274,18 @@
   }
   render(false);
 
-  // ---------- Rayon Enfants & bébés : à part, cartes plus petites, défilement horizontal ----------
+  // ---------- Rayon Enfants & bébés : à part, cartes plus petites. Deux rangées visibles d'emblée :
+  // les ensembles enfant, puis les bodys bébé juste en dessous (chacune défile sur le côté) ----------
   let filtrePetits = 'tout';
+  const RANGEES = [['enfant', 'Ensembles enfant', 'Ensemble enfant'], ['bebe', 'Bodys bébé', 'Body bébé']];
   function rayon() {
-    const l = PRODUITS.filter(p => petit(p) && (filtrePetits === 'tout' || p.cat === filtrePetits));
-    l.sort((x, y) => (x.cat === 'bebe') - (y.cat === 'bebe'));   // ensembles enfants d'abord, puis bodies
-    $('#rayon').innerHTML = l.map(p => `<button class="mini" type="button" data-i="${PRODUITS.indexOf(p)}">
+    $('#rayon').innerHTML = RANGEES.filter(([cat]) => filtrePetits === 'tout' || filtrePetits === cat).map(([cat, titre, nom]) => {
+      const l = PRODUITS.filter(p => p.cat === cat);
+      return `<p class="rayon-sous">${titre} <span>${prix(l[0])} € · ${l.length} modèles</span></p>
+        <div class="rayon-liste" data-lenis-prevent>` + l.map(p => `<button class="mini" type="button" data-i="${PRODUITS.indexOf(p)}">
         <span class="mini-img"><img src="${img(p)}" alt="${p.version} ${p.pays}" loading="lazy"></span>
-        <span class="mini-pays">${ecu(p.pays)} ${p.pays}</span><b>${p.cat === 'bebe' ? 'Body bébé' : 'Ensemble enfant'}</b><i>${prix(p)} €</i></button>`).join('');
+        <span class="mini-pays">${ecu(p.pays)} ${p.pays}</span><b>${nom}</b><i>${prix(p)} €</i></button>`).join('') + '</div>';
+    }).join('');
   }
   rayon();
   $$('.rayon-tab').forEach(t => t.addEventListener('click', () => {
