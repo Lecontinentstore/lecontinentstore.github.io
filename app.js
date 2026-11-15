@@ -33,7 +33,9 @@
   };
   const CODES = { 'Cameroun': 'CMR', "Côte d'Ivoire": 'CIV', 'Cap-Vert': 'CPV', 'Togo': 'TOG', 'Centrafrique': 'CAF', 'Mali': 'MLI', 'Sénégal': 'SEN', 'Maroc': 'MAR', 'Tunisie': 'TUN', 'Égypte': 'EGY', 'Haïti': 'HAI', 'Brésil': 'BRA', 'Argentine': 'ARG', 'Mexique': 'MEX', 'France': 'FRA', 'Portugal': 'POR', 'Espagne': 'ESP', 'Norvège': 'NOR', 'Japon': 'JPN' };
   const coul = p => COULEURS[p] || ['#e3b54c', '#7a5a14', '#ffffff'];
-  const prix = p => p.prix || PRIX;
+  const prix = p => p.promo || p.prix || PRIX;                     // prix payé (promo comprise)
+  const avant = p => p.prix || PRIX;                               // prix normal, barré quand le maillot est en promo
+  const remise = p => Math.round((1 - p.promo / avant(p)) * 100);
   const petit = p => p.cat === 'enfant' || p.cat === 'bebe';      // rayon Enfants & bébés, à part du catalogue adulte
   const theme = pays => { const [a, b, c] = coul(pays); root.style.setProperty('--c1', a); root.style.setProperty('--c2', b); root.style.setProperty('--c3', c); };
   const img = p => p.photo ? `img/photos/${p.img}.webp?v=${p.photo}` : `img/detoures/${p.img}.webp`;
@@ -176,12 +178,14 @@
     if (filtreType === 'tout') return true;
     if (filtreType === 'selection') return !p.cat;
     if (filtreType === 'club') return p.cat === 'club';
+    if (filtreType === 'promo') return !!p.promo;
     return t.includes(filtreType);
   };
   // tailles bébé / enfant : signalées sur le maillot adulte correspondant
   const petitsTxt = p => (p.petits || []).length ? `<p class="card-petits">Aussi en taille ${p.petits.map(x => x === 'bebe' ? 'bébé' : 'enfant').join(' et ')}</p>` : '';
   const badge = p => {
     const t = p.tags || [];
+    if (p.promo) return `<span class="card-badge promo">Promo −${remise(p)} %</span>`;
     if (t.includes('bebe')) return '<span class="card-badge">Bébé</span>';
     if (t.includes('enfant')) return '<span class="card-badge">Enfant</span>';
     if (t.includes('retro')) return '<span class="card-badge">Rétro</span>';
@@ -251,7 +255,7 @@
         </div>
         <div class="card-body">
           <div><p class="card-pays">${ecu(p.pays)} ${p.pays}</p><h3>${p.version}</h3>${petitsTxt(p)}</div>
-          <span class="card-price">${prix(p)} €</span>
+          <span class="card-price">${p.promo ? `<s>${avant(p)} €</s>` : ''}${prix(p)} €</span>
         </div>
       </article>`;
     }).join('');
@@ -284,7 +288,7 @@
       return `<p class="rayon-sous">${titre} <span>${prix(l[0])} € · ${l.length} modèles</span></p>
         <div class="rayon-liste" data-lenis-prevent>` + l.map(p => `<button class="mini" type="button" data-i="${PRODUITS.indexOf(p)}">
         <span class="mini-img"><img src="${img(p)}" alt="${p.version} ${p.pays}" loading="lazy"></span>
-        <span class="mini-pays">${ecu(p.pays)} ${p.pays}</span><b>${nom}</b><i>${prix(p)} €</i></button>`).join('') + '</div>';
+        <span class="mini-pays">${ecu(p.pays)} ${p.pays}</span><b>${nom}</b><i>${p.promo ? `<s>${avant(p)} €</s> ` : ''}${prix(p)} €</i></button>`).join('') + '</div>';
     }).join('');
   }
   rayon();
@@ -340,6 +344,7 @@
     $('#v-floc-fields').hidden = !floc;
     const total = prix(courant) + (floc ? FLOC : 0);
     $('#v-total').textContent = total;
+    $('#v-avant').textContent = courant.promo ? `${avant(courant) + (floc ? FLOC : 0)} €` : '';
     const nom = $('#v-nom').value.trim().toUpperCase(), num = $('#v-num').value.replace(/\D/g, '');
     let msg = `Bonjour Le Continent Store 👋\nJe voudrais le maillot ${courant.pays} ${courant.version}\nTaille : ${taille}`;
     if (floc) msg += `\nFlocage : ${nom || '(nom)'} ${num || '(numéro)'}`;

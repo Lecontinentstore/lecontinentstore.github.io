@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=55">
+  <link rel="stylesheet" href="style.css?v=56">
   <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.165.0/build/three.module.min.js","three/addons/":"https://unpkg.com/three@0.165.0/examples/jsm/"}}</script>
   <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"SportingGoodsStore","name":"Le Continent Store","url":"https://lecontinentstore.github.io/","logo":"https://lecontinentstore.github.io/img/logo/logo-512.png","image":"https://lecontinentstore.github.io/img/logo/partage.jpg","description":"Maillots de foot d'Afrique, du monde et de clubs à 35 €, flocage officiel sur place à 15 €.","telephone":"+33751221206","priceRange":"35 € – 50 €","paymentAccepted":"Espèces, PayPal, Revolut, Wero, virement, Orange Money","address":{"@type":"PostalAddress","streetAddress":"45 rue du Château d'Eau","postalCode":"75010","addressLocality":"Paris","addressCountry":"FR"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"11:00","closes":"20:00"}],"sameAs":["https://www.tiktok.com/@le.continent.storee","https://www.tiktok.com/@le.continent.stor","https://www.instagram.com/le.continent.store/"]}</script>
@@ -91,6 +91,7 @@
     <div class="cat-tools">
       <div class="tabs" role="group" aria-label="Filtrer par type">
         <button class="tab is-on" data-f="tout">Tout</button>
+        <button class="tab tab-promo" data-f="promo">Promos · 15 €</button>
         <button class="tab" data-f="selection">Sélections</button>
         <button class="tab" data-f="club">Clubs</button>
         <button class="tab" data-f="special">Éditions spéciales</button>
@@ -254,7 +255,7 @@
       <p class="kicker" id="v-pays"></p>
       <h3 id="v-title"></h3>
       <p class="v-desc" id="v-desc" hidden></p>
-      <p class="viewer-price"><b id="v-total">35</b> €</p>
+      <p class="viewer-price"><s id="v-avant"></s><b id="v-total">35</b> €</p>
       <div class="sizes v-age" id="v-age" role="radiogroup" aria-label="Version adulte, enfant ou bébé" hidden></div>
       <p class="label">Taille</p>
       <div class="sizes" id="v-sizes" role="radiogroup" aria-label="Taille"></div>
@@ -285,12 +286,12 @@
 <button class="son" id="son" type="button" aria-pressed="false" aria-label="Mettre la musique">
   <span class="son-barres" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="son-txt">Son</span>
 </button>
-<script src="produits.js?v=21"></script>
+<script src="produits.js?v=24"></script>
 <script src="recherche.js?v=4"></script>
 <script src="dos.js?v=2"></script>
 <script src="flocage.js?v=23"></script>
 <script src="son.js?v=5"></script>
-<script src="app.js?v=43"></script>
+<script src="app.js?v=44"></script>
 <script src="stats.js?v=3"></script>
 </body>
 </html>

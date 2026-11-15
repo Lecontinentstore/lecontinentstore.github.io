@@ -719,3 +719,12 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-even
 .rayon-sous:first-child { margin-top: 0; }
 .rayon-sous { display: flex; flex-wrap: wrap; align-items: baseline; gap: .15rem .6rem; }
 .rayon-sous span { color: var(--gold); font-weight: 800; letter-spacing: .04em; font-size: .78rem; white-space: nowrap; }
+
+/* v29 : promos (prix barré, badge rouge, onglet) */
+.card-badge.promo { background: #e0262b; color: #fff; border-color: transparent; }
+.card-price s, .mini s, .viewer-price s { color: var(--dim, rgba(255,255,255,.55)); font-weight: 700; text-decoration-thickness: 2px; margin-right: .35em; }
+.card-price s { font-size: .62em; }
+.viewer-price s { font-size: 1.4rem; font-stretch: 62%; }
+.viewer-price s:empty { display: none; }
+.tab-promo { color: #ff5a5f; }
+.tab-promo.is-on { background: #e0262b; color: #fff; }
