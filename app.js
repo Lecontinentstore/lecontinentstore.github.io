@@ -24,7 +24,7 @@
     'RD Congo': ['#007fff', '#f7d618', '#ce1021'], 'Angola': ['#cc092f', '#000000', '#ffcb00'], 'Algérie': ['#006233', '#ffffff', '#d21034'],
     'Allemagne': ['#000000', '#dd0000', '#ffce00'], 'Bénin': ['#008751', '#fcd116', '#e8112d'], 'Gabon': ['#009e60', '#fcd116', '#3a75c4'],
     'Nigeria': ['#008751', '#ffffff', '#008751'], 'Belgique': ['#000000', '#fdda24', '#ef3340'], 'Corée du Sud': ['#cd2e3a', '#0047a0', '#ffffff'],
-    'Palestine': ['#000000', '#149954', '#e4312b'], 'Angleterre': ['#ffffff', '#cf081f', '#1d2b6b'],
+    'Palestine': ['#000000', '#149954', '#e4312b'], 'Burkina Faso': ['#ef2b2d', '#009e49', '#fcd116'], 'Ghana': ['#ce1126', '#fcd116', '#006b3f'], 'Angleterre': ['#ffffff', '#cf081f', '#1d2b6b'],
     // clubs
     'Real Madrid': ['#ffffff', '#febe10', '#00529f'], 'PSG': ['#004170', '#da291c', '#ffffff'], 'Arsenal': ['#ef0107', '#ffffff', '#063672'],
     'Marseille': ['#2faee0', '#ffffff', '#0b2a4a'], 'Liverpool': ['#c8102e', '#00b2a9', '#f6eb61'], 'Bayern Munich': ['#dc052d', '#0066b2', '#ffffff'],

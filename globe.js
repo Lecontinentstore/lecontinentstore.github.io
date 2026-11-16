@@ -11,7 +11,7 @@ const PAYS = {
   'Norvège': [61.0, 8.5], 'Japon': [36.2, 138.2],
   'Sénégal': [14.5, -14.5], 'RD Congo': [-2.9, 23.7], 'Angola': [-11.2, 17.9], 'Bénin': [9.3, 2.3], 'Gabon': [-0.8, 11.6], 'Nigeria': [9.1, 8.7],
   'Algérie': [28.0, 2.6], 'Angleterre': [52.6, -1.5], 'Belgique': [50.6, 4.6], 'Allemagne': [51.2, 10.4],
-  'Corée du Sud': [36.5, 127.9], 'Palestine': [31.9, 35.2],
+  'Corée du Sud': [36.5, 127.9], 'Palestine': [31.9, 35.2], 'Burkina Faso': [12.4, -1.6], 'Ghana': [7.9, -1.0],
   // clubs : sur leur ville (légèrement décalés quand deux clubs partagent la même)
   'PSG': [48.86, 2.35], 'Paris FC': [48.6, 2.0], 'Marseille': [43.3, 5.4], 'Lyon': [45.76, 4.84],
   'Real Madrid': [40.45, -3.69], 'Barça': [41.38, 2.12], 'Arsenal': [51.55, -0.1], 'Liverpool': [53.4, -2.98],

@@ -48,3 +48,8 @@ Le dossier entier (vidéos comprises, ~37 Mo) s'héberge gratuitement sur Netlif
 **https://lecontinentstore.github.io/** : hébergé gratuitement sur GitHub Pages, dans l'organisation GitHub « Lecontinentstore » (rattachée au compte de Patrick).
 Copie du dossier : `C:\Users\User\Documents\lecontinentstore-site` (dépôt `Lecontinentstore/lecontinentstore.github.io`).
 Pour mettre à jour : recopier `site-web/` dans ce dossier (sans `_proto.html`), puis `git add -A`, `git commit`, `git push`. Le site se met à jour en ~1 minute.
+
+## Référencement Google (15/11/2026)
+- Le 15/11/2026, le site n'apparaissait dans aucune recherche (même « site:lecontinentstore.github.io ») : pas encore indexé. Rien ne le bloque (pas de « noindex »), le titre, la description et la fiche « magasin » (schema.org) sont bons.
+- Ajoutés : `robots.txt` et `sitemap.xml` (à recopier avec le reste à la prochaine mise en ligne). Mettre à jour `lastmod` dans `sitemap.xml` à chaque grosse mise à jour.
+- À faire par Patrick : Google Search Console (ajouter le site, vérifier avec la balise meta, envoyer `sitemap.xml`, « Demander l'indexation »), puis fiche Google Business Profile du magasin avec le lien du site.
